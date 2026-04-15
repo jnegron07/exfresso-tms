@@ -1,0 +1,336 @@
+# Reglas para Agentes — Exfresso
+**Antigravity / Claude Code Rules**
+
+---
+
+## 📋 Restricciones Globales
+
+### Código Propietario
+```yaml
+BLOCKED:
+  - Acceso a código Haskell del backend
+  - Referencias a PureScript anterior
+  - Datos reales del motor de ruteo
+  - APIs externas de productivas (solo mock)
+
+ALLOWED:
+  - Generación de código en capa de aplicación (UI, lógica)
+  - Simulación del motor de ruteo con fixtures JSON
+  - Uso de datos mock realistas
+```
+
+### Arquitectura Permitida
+```yaml
+MUST_USE:
+  - Next.js 14+ (App Router)
+  - Tailwind CSS 3.x
+  - shadcn/ui (no Material-UI, no Bootstrap)
+  - Zustand (no Redux, no Jotai)
+  - React Query (TanStack)
+  - React Hook Form + Zod
+  - Framer Motion (animaciones)
+
+MUST_AVOID:
+  - Componentes personalizados (use shadcn)
+  - Inline CSS (use Tailwind)
+  - API calls a servicios externos
+  - useReducer (use Zustand)
+  - prop drilling profundo
+```
+
+### Convenciones de Código
+```yaml
+NAMING:
+  components: PascalCase.tsx
+  utils: camelCase.ts
+  api: route.ts
+  types: export interface I{EntityName}
+  stores: use{EntityName}Store
+
+IMPORTS_ORDER:
+  1. React imports
+  2. External libraries
+  3. Components (@/components)
+  4. Utils/Types (@/lib)
+  5. Styles (last)
+
+TYPESCRIPT:
+  - Always use explicit types
+  - No 'any' — use 'unknown' if needed
+  - Export interfaces with I prefix
+  - Use Zod for validation
+```
+
+---
+
+## 🎨 Restricciones de Diseño
+
+### Paleta Obligatoria
+```yaml
+PRIMARY:    '#0D9488'  (Teal - botones, acentos)
+SECONDARY:  '#1B2A4A'  (Navy - sidebar, encabezados)
+BACKGROUND: '#FAFAFA'  (Light gray)
+SUCCESS:    '#10B981'  (Green)
+WARNING:    '#F59E0B'  (Amber)
+ERROR:      '#EF4444'  (Red)
+
+FONTS:
+  - Display: Satoshi (no Inter, no Arial, no Roboto)
+  - Body: Plus Jakarta Sans
+```
+
+### Anti-Patrones Bloqueados
+```yaml
+BLOCKED_PATTERNS:
+  - Modales superpuestos (usar inline expansion o new page)
+  - Formularios con 10+ campos en una vista (usar wizard)
+  - Pestañas anidadas profundas (revelar progresivamente)
+  - Densidad extrema de información (usar collapsibles)
+  - Entrada de datos sin asistencia IA
+  - Fondos sólidos planos (usar gradientes sutiles)
+  - Sin espacio en blanco (ser generoso con padding)
+
+REQUIRED:
+  - Revelación progresiva en toda la UI
+  - Botones CTA claros en cada pantalla
+  - Microcopy amigable (no jerga técnica)
+  - Animaciones suaves (Framer Motion)
+  - Estados de carga (spinners, skeletons)
+  - Estados vacíos (ilustraciones + mensajes)
+```
+
+---
+
+## 📁 Restricciones de Estructura
+
+### Estructura de Carpetas (INMUTABLE)
+```
+app/
+├── (auth)/          # Rutas de autenticación
+├── (dashboard)/     # Rutas protegidas
+│   ├── layout.tsx   # Sidebar + topbar
+│   └── [feature]/   # Por característica
+├── api/             # API routes
+└── globals.css
+
+components/
+├── ui/              # shadcn/ui (NO crear custom buttons)
+├── layout/          # Sidebar, topbar, etc
+├── [feature]/       # Agrupar por característica
+└── common/          # Reutilizables
+
+lib/
+├── mock-data/       # Fixtures JSON
+├── api/             # Client, endpoints
+├── stores/          # Zustand stores
+├── types/           # TypeScript interfaces
+└── utils/           # Helpers, validators
+```
+
+**Transgresión:** Crear archivos fuera de esta estructura requiere aprobación en `decisions.log`.
+
+---
+
+## 🔄 Restricciones de Datos
+
+### Fuentes de Datos (PERMITIDAS)
+```yaml
+ALLOWED:
+  - lib/mock-data/*.ts (fixtures JSON)
+  - app/api/*/route.ts (mock API responses)
+  - Zustand stores (estado global)
+  - React Query cache (estado del servidor)
+
+BLOCKED:
+  - Hardcoded en componentes
+  - localStorage directamente (usar Zustand)
+  - Variables globales (use Zustand)
+  - APIs externas reales
+```
+
+### Formato de Datos
+```yaml
+REQUIRED_FIELDS_PER_ENTITY:
+  Shipment: id, shipmentNumber, origin, destination, mode, status, legs[], trackingEvents[], ledgerEntries[], documents[], createdAt, updatedAt
+  RateCard: id, type, origin, destination, carrier, ratePerKg, ratePerCBM, currency, validFrom, validTo
+  Partner: id, companyName, country, ports[], services[], connectionStatus, sharedRateCards[]
+  
+TIMESTAMP_FORMAT: ISO 8601 (2024-04-22T10:00:00Z)
+CURRENCY_CODES: ISO 4217 (USD, EUR, GBP, CNY, etc)
+PORT_CODES: IATA 3-letter codes (USLAX, DEHAM, CNSHA, etc)
+MODE_VALUES: 'air' | 'ocean' | 'trucking' | 'multimodal'
+```
+
+---
+
+## 🎯 Restricciones por Pantalla
+
+### Dashboard
+```yaml
+MUST_HAVE:
+  - 4 KPI cards (Activos, Llegando, Cotizaciones, Pendientes)
+  - Mapa mundial con marcadores animados (Mapbox GL)
+  - Panel de "Acción Requerida" (3-5 items)
+  - Activity Feed (últimos eventos)
+  
+BLOCKED:
+  - Modales de resumen (usar popover en mapa)
+  - Formularios en dashboard (usar navegación)
+  - Más de 4 secciones principales
+```
+
+### Búsqueda de Rutas (⭐ PANTALLA ESTRELLA)
+```yaml
+MUST_HAVE:
+  - Formulario simple: Origen, Destino, Peso, Volumen, Modo, Fechas
+  - Animación de carga de 7 segundos (globo pulsante)
+  - 5-8 resultados como tarjetas clasificadas
+  - Desglose de precios expandible
+  - CTAs: "Reservar", "Generar Cotización"
+
+MUST_NOT_HAVE:
+  - Toda la forma en un modal
+  - Pestañas en resultados
+  - Resultados en tabla (usar tarjetas visuales)
+```
+
+### Detalle de Envío
+```yaml
+MUST_HAVE:
+  - Timeline visual de ruta (tramo por tramo)
+  - Panel de rastreo con eventos + forma "Agregar Nota"
+  - Libro contable colapsable (costos vs ingresos)
+  - Panel de documentos colapsable
+  
+MUST_NOT_HAVE:
+  - 20+ pestañas (usar paneles colapsables)
+  - Modales para detalles de tramo (expandir inline)
+  - Separación de layouts por sección
+```
+
+### Carga de Tarjetas
+```yaml
+MUST_HAVE:
+  - Zona drag-and-drop grande
+  - Preview de documento + datos extraídos lado a lado
+  - Indicadores de confianza (✅ alto, ⚠️ revisar)
+  - Mapeo manual de campos si es necesario
+  - Resumen antes de guardar
+  
+MUST_NOT_HAVE:
+  - Cargar y procesar escondido
+  - Sin preview de extracción
+  - Sin opción de mapeo manual
+```
+
+---
+
+## 🔐 Restricciones de Seguridad
+
+### Autenticación
+```yaml
+IMPLEMENTATION:
+  - NextAuth.js con credenciales mock
+  - JWT para sesiones
+  - Auto-refresh en token expiry
+  - Redirect a login en 401/403
+  
+DEMO_CREDENTIALS:
+  - Email: user@exfresso.example
+  - Password: demo123
+  - (más en mock-data/users.ts)
+```
+
+### Control de Acceso
+```yaml
+ROLES:
+  - admin: acceso total
+  - operations-manager: create/edit envíos, finanzas, rastreo
+  - agent: lectura de asignados, actualizar estado
+
+ENFORCEMENT:
+  - Mostrar/ocultar UI según rol
+  - Validar en API routes
+  - Log de accesos (auditoría mock)
+```
+
+---
+
+## 🚀 Restricciones de Deploy
+
+### Vercel
+```yaml
+REQUIRED:
+  - next.config.js configurado
+  - Environment variables en .env.local
+  - Auto-deploy en merge a main
+  - Preview deployments para PR
+  
+NOT_ALLOWED:
+  - Llamadas a APIs no-SSR en build time
+  - Secrets en código (usar .env.local)
+```
+
+---
+
+## ✅ Checklist de Validación Antes de Completar
+
+### Antes de Marcar Sprint como Completado
+```
+[ ] Todos los componentes usan shadcn/ui (no custom)
+[ ] Todos los formularios validan con Zod
+[ ] Todos los datos vienen de mock-data/ o API routes
+[ ] Zustand stores usados para estado global
+[ ] React Query para datos del servidor
+[ ] Framer Motion para animaciones
+[ ] Tailwind para todos los estilos
+[ ] Responsive probado (mobile, tablet, desktop)
+[ ] Anti-patrones evitados (ver lista)
+[ ] Paleta de colores respetada
+[ ] Tipografía Satoshi + Plus Jakarta Sans
+[ ] TypeScript strict (sin 'any')
+[ ] Archivos nombrados según convención
+[ ] No hay código muerto
+[ ] README.md actualizado
+[ ] Script de demo funcional
+```
+
+---
+
+## 🔄 Flujo de Aprobación para Excepciones
+
+Si necesitas violar una regla:
+
+1. Documenta en `decisions.log` (crear en `.agents/artifacts/`)
+   ```
+   DECISION: [Qué quieres hacer]
+   REASON: [Por qué]
+   TRADE_OFF: [Qué se pierde]
+   APPROVAL: [user/date]
+   ```
+
+2. Referencia decisión en código (comentario):
+   ```typescript
+   // See decisions.log: DECISION_ID
+   ```
+
+3. Notifica en prompt: "Esto requiere excepción aprobada"
+
+---
+
+## 📞 Escaladas Comunes
+
+| Situación | Solución | Ref |
+|-----------|----------|-----|
+| "¿Necesito un componente custom?" | No, usa shadcn/ui | tech-decisions.md |
+| "¿Puedo usar Redux?" | No, usa Zustand | tech-decisions.md |
+| "¿Y si los datos vienen de un CMS?" | Simula en mock-data | mock-data.md |
+| "¿Puedo usar Material-UI?" | No, usa shadcn/ui | tech-decisions.md |
+| "¿Qué pasa con localStorage?" | Usa Zustand | technical-decisions.md |
+| "¿Necesito testing?" | Vitest (future) | tech-decisions.md |
+
+---
+
+**Estas reglas son la configuración de Antigravity para Exfresso.**
+**Actualiza este archivo si cambian requisitos.**
+**Última revisión:** 2024-04-22

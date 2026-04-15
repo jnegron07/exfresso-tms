@@ -1,0 +1,194 @@
+TOP-LEVEL STRUCTURE
+.
+├── .agents/                 # Fuente única de verdad para la IA
+│   ├── knowledge/           # Documentación semántica
+│   └── rules.yaml           # Reglas y restricciones
+├── outputs/                 # Entregables y resúmenes
+├── src/                     # Código fuente
+├── public/                  # Archivos estáticos
+└── package.json             # Configuración del proyecto
+╔═══════════════════════════════════════════════════════════════════════════╗
+║                  EXFRESSO — FUENTE ÚNICA DE VERDAD                        ║
+║                      Estructura Completa .agents                          ║
+╚═══════════════════════════════════════════════════════════════════════════╝
+
+📦 CARPETA RAÍZ
+├── README.md                          ⭐ RESUMEN VISUAL DE TODO
+├── QUICKSTART.md                      ⭐ CÓMO EMPEZAR (5 MIN)
+├── ESTRUCTURA.txt                     📄 ESTE ARCHIVO
+│
+└── .agents/
+    ├── knowledge/                     🧠 FUENTE ÚNICA DE VERDAD
+    │   │
+    │   ├── INDEX.md
+    │   │   ├─ Mapa de navegación completo
+    │   │   ├─ Quick reference (colores, código, decisiones)
+    │   │   ├─ FAQs para Antigravity
+    │   │   ├─ Checklist de completitud
+    │   │   └─ Tabla de decisiones clave
+    │   │   📍 COMIENZA AQUÍ para orientarse
+    │   │
+    │   ├── project.md
+    │   │   ├─ Qué es Exfresso (TMS para freight forwarding)
+    │   │   ├─ Diferenciador: motor de ruteo de 7 segundos
+    │   │   ├─ Analogía: red social de forwarders
+    │   │   ├─ Anti-patrones a evitar (CargoWise legacy)
+    │   │   ├─ Principios de diseño requeridos
+    │   │   ├─ Paleta de colores exacta
+    │   │   ├─ Stack tecnológico confirmado
+    │   │   ├─ Modelo de datos (entidades)
+    │   │   ├─ Requisitos de datos semilla
+    │   │   ├─ Plan de sprints
+    │   │   └─ Instrucciones para Claude Code
+    │   │   📍 LECTURA OBLIGATORIA (10-15 min)
+    │   │
+    │   ├── architecture.md
+    │   │   ├─ Layout global (sidebar, topbar, comando paleta)
+    │   │   ├─ Dashboard (KPIs, mapa, alertas, feed)
+    │   │   ├─ Búsqueda de rutas ⭐ (formulario, resultados, 7s)
+    │   │   ├─ Detalle de envío (timeline, rastreo, ledger)
+    │   │   ├─ Carga de tarjetas (drag-drop, preview, mapeo)
+    │   │   ├─ Red de socios (directorio, conexiones)
+    │   │   ├─ Wizard crear envío (4 pasos)
+    │   │   ├─ Libro contable y finanzas
+    │   │   ├─ Gestión de documentos
+    │   │   ├─ Perfil y configuración
+    │   │   ├─ Animaciones y microinteracciones
+    │   │   └─ Especificaciones UX detalladas para CADA pantalla
+    │   │   📍 SPECS EXACTAS PARA DISEÑO/UI (20-30 min)
+    │   │
+    │   ├── technical-decisions.md
+    │   │   ├─ Stack final (Next.js, Tailwind, shadcn, Zustand, React Query)
+    │   │   ├─ Estructura de carpetas completa (copiar/pegar)
+    │   │   ├─ Convenciones TypeScript
+    │   │   ├─ Patrones React (componentes, hooks, stores)
+    │   │   ├─ Gestión de estado con Zustand (ejemplos)
+    │   │   ├─ API routes (simulación de backend)
+    │   │   ├─ React Query (TanStack) setup
+    │   │   ├─ Validación con Zod (schemas)
+    │   │   ├─ Tailwind + shadcn/ui convenciones
+    │   │   ├─ Animaciones Framer Motion
+    │   │   ├─ Testing (vitest)
+    │   │   ├─ Deployment (Vercel, Docker)
+    │   │   └─ Ejemplos de código para cada patrón
+    │   │   📍 REFERENCIA DURANTE DESARROLLO (30-45 min)
+    │   │
+    │   └── mock-data.md
+    │       ├─ Estructura JSON de cada entidad
+    │       ├─ Ejemplos realistas (15-20 envíos, 5-8 tarifas, etc)
+    │       ├─ Puertos reales (USLAX, DEHAM, CNSHA, etc)
+    │       ├─ Transportistas reales (Lufthansa, Maersk, DHL, etc)
+    │       ├─ Descripciones realistas de carga
+    │       ├─ Estados y enums permitidos
+    │       ├─ Patrones de datos por pantalla
+    │       ├─ Convención de IDs
+    │       ├─ Timestamps realistas
+    │       └─ Estructura de archivos para fixtures
+    │       📍 DATOS Y EJEMPLOS PARA SEMBRAR (10 min)
+    │
+    ├── rules.yaml
+    │   ├─ Restricciones técnicas (stack obligatorio)
+    │   ├─ Anti-patrones bloqueados (modales, pestañas, etc)
+    │   ├─ Paleta de colores (inmutable)
+    │   ├─ Por pantalla: MUST_HAVE vs BLOCKED
+    │   ├─ Restricciones de estructura de archivos
+    │   ├─ Restricciones de datos y formato
+    │   ├─ Restricciones de seguridad
+    │   ├─ Checklist de validación antes de completar
+    │   ├─ Flujo de aprobación para excepciones
+    │   └─ Escaladas comunes
+    │   📍 REGLAS PARA AGENTES ANTIGRAVITY (5 min, consultable)
+    │
+    └── artifacts/                     (se genera automáticamente)
+        ├── task-plans/               ← Planes de tareas del agente
+        ├── implementation-plans/     ← Planes de implementación
+        ├── screenshots/              ← Pantallazos de demos
+        └── decisions.log             ← DOCUMENTAR EXCEPCIONES AQUÍ
+
+═══════════════════════════════════════════════════════════════════════════
+
+📊 TAMAÑO Y TIEMPO
+
+Archivo                          Tamaño    Tiempo de Lectura
+────────────────────────────────────────────────────────────
+README.md                        ~3 KB     3 min
+QUICKSTART.md                    ~6 KB     5 min
+.agents/knowledge/INDEX.md       ~8 KB     5 min
+.agents/knowledge/project.md     ~15 KB    10-15 min
+.agents/knowledge/architecture.md ~18 KB   20-30 min
+.agents/knowledge/technical-decisions.md ~22 KB  30-45 min (ref)
+.agents/knowledge/mock-data.md   ~12 KB    10 min
+.agents/rules.yaml               ~8 KB     5 min (consultable)
+
+TOTAL: ~92 KB de documentación pura
+
+═══════════════════════════════════════════════════════════════════════════
+
+🎯 FLUJO DE LECTURA RECOMENDADO
+
+Para Empezar (15 min):
+  1. README.md (3 min)
+  2. QUICKSTART.md (5 min)
+  3. .agents/knowledge/INDEX.md (5 min)
+  4. .agents/knowledge/project.md (primeras 5 secciones)
+
+Para Entender el Producto (30 min):
+  1. .agents/knowledge/project.md (completo)
+  2. .agents/knowledge/architecture.md (Dashboard + Búsqueda Rutas)
+  3. .agents/knowledge/mock-data.md (esquemas principales)
+
+Para Implementar (consulta durante dev):
+  1. .agents/knowledge/technical-decisions.md (según necesites)
+  2. .agents/knowledge/architecture.md (pantalla específica)
+  3. .agents/knowledge/mock-data.md (cuando necesites datos)
+  4. .agents/rules.yaml (restricciones)
+
+═══════════════════════════════════════════════════════════════════════════
+
+✨ CARACTERÍSTICAS CLAVE
+
+✅ 100% cobertura del PDF de requerimientos
+✅ Compatible con Google Antigravity
+✅ Listo para Claude Code (Modo Plan)
+✅ Stack moderno confirmado (Next.js 14+, Tailwind, shadcn)
+✅ Especificaciones UX pantalla por pantalla
+✅ Datos mock realistas (15-20 envíos, puertos reales, etc)
+✅ Reglas estrictas para agentes de IA
+✅ Convenciones de código TypeScript/React
+✅ Ejemplos de código para cada patrón
+✅ Estructura de carpetas lista para copiar/pegar
+✅ Paleta de colores exacta (Teal #0D9488, Navy #1B2A4A)
+✅ Anti-patrones claros (qué NO hacer)
+✅ Principios de diseño explícitos
+
+═══════════════════════════════════════════════════════════════════════════
+
+🚀 PRÓXIMOS PASOS
+
+1. Abre README.md o QUICKSTART.md
+2. Lee .agents/knowledge/project.md
+3. Abre Google Antigravity o Claude Code
+4. Copia el prompt de QUICKSTART.md
+5. Pasa esta carpeta (.agents/) como contexto
+6. Comienza a construir el prototipo
+
+═══════════════════════════════════════════════════════════════════════════
+
+📞 SOPORTE
+
+Si necesitas encontrar algo:
+  1. Busca en .agents/knowledge/INDEX.md (Quick ref)
+  2. Busca en el archivo .md específico
+  3. Consulta .agents/rules.yaml para restricciones
+  4. Documenta tu decisión en .agents/artifacts/decisions.log
+
+═══════════════════════════════════════════════════════════════════════════
+
+¡Listo para construir Exfresso! 🎯
+
+Versión: 1.0
+Última actualización: Abril 2026
+Autor: DaCodes × Exfresso
+Licencia: CONFIDENCIAL
+
+═══════════════════════════════════════════════════════════════════════════
