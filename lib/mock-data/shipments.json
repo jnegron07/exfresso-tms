@@ -1,0 +1,138 @@
+[
+  {
+    "id": "SHP-001",
+    "trackingId": "EXF-7729-9128",
+    "status": "In Transit",
+    "origin": {
+      "city": "Shanghai",
+      "country": "CN",
+      "code": "CNSHA",
+      "port": "Port of Shanghai"
+    },
+    "destination": {
+      "city": "Los Angeles",
+      "country": "US",
+      "code": "USLAX",
+      "port": "Port of Los Angeles"
+    },
+    "shipper": "Global Tech Manufacturing",
+    "consignee": "Advanced Electronics Inc.",
+    "mode": "Ocean",
+    "type": "FCL",
+    "containerType": "40' High Cube",
+    "weight": 18500,
+    "volume": 65.4,
+    "eta": "2024-04-20T14:00:00Z",
+    "createdAt": "2024-03-25T08:30:00Z",
+    "milestones": [
+      { "id": "m1", "title": "Booking Confirmed", "date": "2024-03-25T09:00:00Z", "completed": true },
+      { "id": "m2", "title": "Empty Container Pickup", "date": "2024-03-27T10:30:00Z", "completed": true },
+      { "id": "m3", "title": "Loaded at Origin", "date": "2024-03-29T16:45:00Z", "completed": true },
+      { "id": "m4", "title": "Departure from Port", "date": "2024-04-02T08:00:00Z", "completed": true },
+      { "id": "m5", "title": "Arrival at Destination", "date": "2024-04-20T14:00:00Z", "completed": false },
+      { "id": "m6", "title": "Final Delivery", "date": "2024-04-22T09:00:00Z", "completed": false }
+    ]
+  },
+  {
+    "id": "SHP-002",
+    "trackingId": "EXF-1102-4458",
+    "status": "Pending",
+    "origin": {
+      "city": "Hamburg",
+      "country": "DE",
+      "code": "DEHAM",
+      "port": "Port of Hamburg"
+    },
+    "destination": {
+      "city": "Veracruz",
+      "country": "MX",
+      "code": "MXVER",
+      "port": "Port of Veracruz"
+    },
+    "shipper": "EuroAuto Parts GmbH",
+    "consignee": "Automotriz del Bajío",
+    "mode": "Ocean",
+    "type": "LCL",
+    "weight": 1200,
+    "volume": 4.2,
+    "createdAt": "2024-04-10T11:15:00Z",
+    "milestones": [
+      { "id": "m1", "title": "Booking Requested", "date": "2024-04-10T11:15:00Z", "completed": true },
+      { "id": "m2", "title": "Booking Confirmed", "date": "2024-04-11T09:00:00Z", "completed": true }
+    ]
+  },
+  {
+    "id": "SHP-003",
+    "trackingId": "EXF-8833-2210",
+    "status": "Delivered",
+    "origin": {
+      "city": "Tokyo",
+      "country": "JP",
+      "code": "JPNRT",
+      "port": "Narita International Airport"
+    },
+    "destination": {
+      "city": "Chicago",
+      "country": "US",
+      "code": "USORD",
+      "port": "O'Hare International Airport"
+    },
+    "shipper": "Kyoto Precision Ltd",
+    "consignee": "MedTech Solutions",
+    "mode": "Air",
+    "type": "Express",
+    "weight": 450,
+    "volume": 1.8,
+    "deliveredAt": "2024-04-05T15:20:00Z",
+    "createdAt": "2024-04-01T10:00:00Z",
+    "milestones": [
+      { "title": "Delivered", "date": "2024-04-05T15:20:00Z", "completed": true }
+    ]
+  },
+  {
+    "id": "SHP-004",
+    "trackingId": "EXF-5544-3322",
+    "status": "In Transit",
+    "origin": {
+      "city": "Ho Chi Minh City",
+      "country": "VN",
+      "code": "VNSGN",
+      "port": "Cat Lai Port"
+    },
+    "destination": {
+      "city": "Rotterdam",
+      "country": "NL",
+      "code": "NLRTM",
+      "port": "Port of Rotterdam"
+    },
+    "shipper": "VietTextiles Group",
+    "consignee": "Nordic Fashion Retail",
+    "mode": "Ocean",
+    "type": "FCL",
+    "eta": "2024-05-12T06:00:00Z",
+    "createdAt": "2024-04-05T14:30:00Z"
+  },
+  {
+    "id": "SHP-005",
+    "trackingId": "EXF-9900-1122",
+    "status": "Customs Hold",
+    "origin": {
+      "city": "Santos",
+      "country": "BR",
+      "code": "BRSSZ",
+      "port": "Port of Santos"
+    },
+    "destination": {
+      "city": "Miami",
+      "country": "US",
+      "code": "USMIA",
+      "port": "Port of Miami"
+    },
+    "shipper": "Coffee Beans Export",
+    "consignee": "StarBrew Supply",
+    "mode": "Ocean",
+    "type": "FCL",
+    "eta": "2024-04-18T20:00:00Z",
+    "createdAt": "2024-03-15T09:00:00Z"
+  }
+]

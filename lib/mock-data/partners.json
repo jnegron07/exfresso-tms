@@ -1,0 +1,38 @@
+[
+  {
+    "id": "p-001",
+    "name": "Global Tech Manufacturing",
+    "type": "Shipper",
+    "country": "China",
+    "rating": 4.8,
+    "lastShipment": "2024-04-02",
+    "contact": "Li Wei",
+    "email": "l.wei@gtm.cn"
+  },
+  {
+    "id": "p-002",
+    "name": "Advanced Electronics Inc.",
+    "type": "Consignee",
+    "country": "USA",
+    "rating": 4.9,
+    "lastShipment": "2024-04-05",
+    "contact": "Sarah Jones",
+    "email": "s.jones@adelec.com"
+  },
+  {
+    "id": "p-003",
+    "name": "Maersk Line",
+    "type": "Carrier",
+    "country": "Denmark",
+    "rating": 4.7,
+    "status": "Platinum Partner"
+  },
+  {
+    "id": "p-004",
+    "name": "Hapag-Lloyd",
+    "type": "Carrier",
+    "country": "Germany",
+    "rating": 4.6,
+    "status": "Gold Partner"
+  }
+]

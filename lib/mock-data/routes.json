@@ -1,0 +1,94 @@
+{
+  "CNSHA-USLAX": [
+    {
+      "id": "rt-101",
+      "name": "Pacific Express",
+      "type": "Direct",
+      "mode": "Ocean",
+      "price": 2450.00,
+      "currency": "USD",
+      "transitTime": 14,
+      "co2": 850,
+      "reliability": 98,
+      "bestValue": false,
+      "fastest": true,
+      "sustainable": false,
+      "carriers": ["Maersk"],
+      "stages": [
+        { "type": "Pickup", "location": "Factory", "duration": 1 },
+        { "type": "Ocean", "location": "Pacific Ocean", "duration": 12 },
+        { "type": "Delivery", "location": "Warehouse", "duration": 1 }
+      ]
+    },
+    {
+      "id": "rt-102",
+      "name": "Green Wave",
+      "type": "Sustainable",
+      "mode": "Ocean",
+      "price": 2800.00,
+      "currency": "USD",
+      "transitTime": 16,
+      "co2": 420,
+      "reliability": 95,
+      "bestValue": false,
+      "fastest": false,
+      "sustainable": true,
+      "carriers": ["Hapag-Lloyd"],
+      "stages": [
+        { "type": "Pickup", "location": "Factory", "duration": 1 },
+        { "type": "Ocean", "location": "Pacific Ocean (Biofuel)", "duration": 14 },
+        { "type": "Delivery", "location": "Warehouse", "duration": 1 }
+      ]
+    },
+    {
+      "id": "rt-103",
+      "name": "Eco-Bridge",
+      "type": "Multi-modal",
+      "mode": "Rail/Ocean",
+      "price": 1950.00,
+      "currency": "USD",
+      "transitTime": 22,
+      "co2": 600,
+      "reliability": 92,
+      "bestValue": true,
+      "fastest": false,
+      "sustainable": false,
+      "carriers": ["COSCO", "Union Pacific"],
+      "stages": [
+        { "type": "Rail", "location": "China Inland", "duration": 3 },
+        { "type": "Ocean", "location": "Pacific North", "duration": 16 },
+        { "type": "Truck", "location": "US West Coast", "duration": 3 }
+      ]
+    }
+  ],
+  "DEHAM-MXVER": [
+    {
+      "id": "rt-201",
+      "name": "Atlantic Link",
+      "type": "Direct",
+      "mode": "Ocean",
+      "price": 1800.00,
+      "currency": "USD",
+      "transitTime": 18,
+      "co2": 920,
+      "reliability": 96,
+      "bestValue": true,
+      "fastest": true,
+      "carriers": ["MSC"]
+    },
+    {
+      "id": "rt-202",
+      "name": "Trans-Atlantic Economy",
+      "type": "Hub-spoke",
+      "mode": "Ocean",
+      "price": 1450.00,
+      "currency": "USD",
+      "transitTime": 25,
+      "co2": 1100,
+      "reliability": 88,
+      "bestValue": false,
+      "fastest": false,
+      "carriers": ["CMA CGM"]
+    }
+  ]
+}

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Market Architect | Rate Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#171f33",
+                    "surface-variant": "#2d3449",
+                    "on-tertiary": "#591c02",
+                    "on-surface": "#dbe2fd",
+                    "on-secondary-fixed-variant": "#384668",
+                    "primary": "#6bd8cb",
+                    "outline-variant": "#3d4947",
+                    "on-error-container": "#ffdad6",
+                    "secondary": "#b7c6ee",
+                    "surface-container-high": "#222a3e",
+                    "surface": "#0b1326",
+                    "inverse-surface": "#dbe2fd",
+                    "primary-container": "#29a195",
+                    "surface-tint": "#6bd8cb",
+                    "tertiary": "#ffb59a",
+                    "primary-fixed": "#89f5e7",
+                    "secondary-fixed-dim": "#b7c6ee",
+                    "secondary-container": "#384668",
+                    "on-tertiary-fixed": "#370e00",
+                    "on-primary-container": "#00302b",
+                    "on-primary-fixed-variant": "#005049",
+                    "on-tertiary-fixed-variant": "#773215",
+                    "tertiary-fixed": "#ffdbce",
+                    "surface-container-low": "#131b2e",
+                    "surface-dim": "#0b1326",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#2d3449",
+                    "background": "#0b1326",
+                    "error": "#ffb4ab",
+                    "on-primary": "#003732",
+                    "inverse-on-surface": "#283044",
+                    "on-secondary-fixed": "#0a1a3a",
+                    "surface-bright": "#31394e",
+                    "error-container": "#93000a",
+                    "on-primary-fixed": "#00201d",
+                    "tertiary-fixed-dim": "#ffb59a",
+                    "primary-fixed-dim": "#6bd8cb",
+                    "on-background": "#dbe2fd",
+                    "on-secondary-container": "#a6b5dc",
+                    "on-surface-variant": "#bcc9c6",
+                    "tertiary-container": "#d27956",
+                    "on-tertiary-container": "#4f1700",
+                    "outline": "#879391",
+                    "secondary-fixed": "#d9e2ff",
+                    "on-secondary": "#213050",
+                    "surface-container-lowest": "#060d20",
+                    "inverse-primary": "#006a61"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Plus Jakarta Sans"],
+                    "label": ["Plus Jakarta Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0b1326; color: #dbe2fd; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(45, 52, 73, 0.4); backdrop-filter: blur(20px); border: 1px solid rgba(107, 216, 203, 0.1); }
+        .hero-gradient { background: linear-gradient(135deg, #171f33 0%, #0b1326 100%); }
+        .primary-cta-gradient { background: linear-gradient(135deg, #6bd8cb 0%, #29a195 100%); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-[#0B1326] border-r border-white/5 p-4 gap-2">
+<div class="flex items-center gap-3 px-2 py-4 mb-4">
+<div class="w-10 h-10 rounded-xl primary-cta-gradient flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-[#6BD8CB] leading-tight">Freight Intelligence</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">Predictive Architect</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#6BD8CB] bg-[#0D9488]/10 rounded-lg transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-medium text-sm">Market Index</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="font-medium text-sm">Benchmarking</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">route</span>
+<span class="font-medium text-sm">Lane Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-medium text-sm">Carrier Compare</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-slate-400 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-medium text-sm">Reports</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 pt-4 border-t border-white/5">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-medium text-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-400 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-medium text-sm">Account</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto no-scrollbar relative">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-6 py-3 w-full bg-[#0B1326] border-b border-white/10 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="text-xl font-bold text-[#6BD8CB] tracking-tighter">Market Architect</div>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-lg">search</span>
+<input class="bg-surface-container-lowest border-none rounded-full py-1.5 pl-10 pr-4 text-sm w-80 focus:ring-1 focus:ring-primary/50 text-on-surface placeholder:text-slate-500" placeholder="Search markets, lanes, carriers..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 text-slate-400 hover:bg-white/5 rounded-full transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-white/10">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="Professional corporate headshot of a logistics executive in a dark suit with a clean office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjpEusCHex_2hUCXQHaSrmh9DmJgsq4UNMwlhyvmCyxLfsWONmA3qmaETNMbo5YRD6LxBnoS88xX64CknuSyB3flvrl2QFaRMKbCpvEHxrxn_35hRabMjifZr3nwKdAqaHhSouYEHWVZPfWYJdmYqE0dyz1e66zig80Y7qzkbTPp9tD4kCivijJM2F6zJPckei_qh8oitoY1hiABtxPF3DvFoOJbfRpE8-2j4aGX_scA58x4VCD1mHkh5wk-TyCh_YNlw4z4J91Axx"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Body -->
+<div class="p-6 space-y-8 max-w-7xl mx-auto w-full">
+<!-- 1. Market Index Hero View -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+<div class="lg:col-span-8 space-y-6">
+<div class="flex items-end justify-between">
+<div>
+<h2 class="text-sm font-bold tracking-[0.2em] text-slate-500 uppercase mb-2">Global Aggregate Index</h2>
+<div class="flex items-baseline gap-4">
+<span class="text-6xl font-extrabold tracking-tighter text-on-surface">$2,842.50</span>
+<span class="flex items-center text-primary font-bold">
+<span class="material-symbols-outlined">trending_down</span>
+                                        3.2%
+                                    </span>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-xs font-bold text-primary">OCEAN</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-low text-xs font-bold text-slate-500">AIR</span>
+</div>
+</div>
+<!-- Area Chart Container -->
+<div class="h-[320px] w-full bg-surface-container-low rounded-xl overflow-hidden relative p-8 group">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #6bd8cb 1px, transparent 0); background-size: 24px 24px;"></div>
+<!-- Mock Data Visualization Area -->
+<div class="w-full h-full flex items-end justify-between gap-1">
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[60%] hover:bg-primary/20 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-[10px] font-bold text-primary bg-surface-container-highest px-2 py-1 rounded">2.4k</div>
+</div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[65%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[55%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[70%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[85%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-primary/40 rounded-t-sm h-[75%] shadow-[0_0_20px_rgba(107,216,203,0.2)]"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[60%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[50%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[45%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[40%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[35%] hover:bg-primary/20 transition-colors"></div>
+<div class="w-full bg-surface-variant/20 rounded-t-sm h-[30%] hover:bg-primary/20 transition-colors"></div>
+</div>
+<div class="absolute bottom-4 left-8 right-8 flex justify-between text-[10px] font-bold text-slate-500 tracking-widest">
+<span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 space-y-6">
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden border-l-4 border-tertiary">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-bold text-tertiary uppercase tracking-wider text-xs">AI Prediction Tag</h3>
+</div>
+<p class="text-xl font-bold text-on-surface leading-tight mb-4">Anticipated 5% decrease in trans-pacific lanes</p>
+<div class="flex items-center gap-2 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Projected for Q3 2024</span>
+</div>
+</div>
+<div class="bg-surface-container-high rounded-xl p-6">
+<h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-4">Market Sentiment</h3>
+<div class="flex items-center gap-4">
+<div class="flex-1 bg-surface-container-lowest h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[72%] rounded-full"></div>
+</div>
+<span class="text-sm font-bold text-primary">Bullish</span>
+</div>
+<p class="mt-4 text-xs text-slate-400 leading-relaxed">Inventory replenishment cycles in North America are stabilizing, leading to increased demand in secondary lanes.</p>
+</div>
+</div>
+</section>
+<!-- 2. Carrier Quote Comparison Grid -->
+<section class="space-y-4">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-extrabold tracking-tight">Active Benchmarking Comparison</h2>
+<button class="text-primary text-xs font-bold flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm">filter_list</span> FILTER VIEW
+                        </button>
+</div>
+<div class="grid grid-cols-1 gap-1">
+<!-- Header -->
+<div class="grid grid-cols-6 px-6 py-3 bg-surface-container-lowest text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] rounded-t-xl">
+<div class="col-span-2">Carrier Entity</div>
+<div>Base Rate</div>
+<div>Surcharges</div>
+<div>Transit Time</div>
+<div class="text-right">Reliability</div>
+</div>
+<!-- Card 1: Smart Choice -->
+<div class="grid grid-cols-6 px-6 py-5 bg-surface-container items-center group relative overflow-hidden transition-all duration-200 hover:bg-surface-container-high">
+<div class="absolute inset-y-0 left-0 w-1 bg-primary"></div>
+<div class="col-span-2 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Carrier logo" class="w-full h-full object-contain" data-alt="Minimalist geometric logo of a global logistics company in dark navy and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCA8wjFleDfjuX4O3IIDXAOhLMboo19AiKorGQIXVV-x0aoB0mB-2CIolVzKVO7AhAyIxoJsyk2OOkyfXpprpvafAz3AdTbYDXxzFQS8HGiz_Xw-73-quHFw2chaWnqtfBnpESbVCsYiCn4btd4dREWGgfo5djAJDHadPwq80BVdWnfbna2JFilIkKYsqE3tKRMFlvKgkgxwk1A2fAhNi5DzPScJTtI72IM2gPKfGUhsz6GOkRs4ZaAkuvY2m8S1lOfJeCRC_a9czEs"/>
+</div>
+<div>
+<div class="font-bold text-on-surface">Oceanic Blue Lines</div>
+<div class="text-[10px] text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">stars</span> SMART CHOICE
+                                    </div>
+</div>
+</div>
+<div class="text-lg font-extrabold">$2,140</div>
+<div class="text-sm text-slate-400">+$145 <span class="text-[10px] opacity-50 text-slate-500">BAF</span></div>
+<div class="text-sm font-medium">18 Days</div>
+<div class="flex justify-end">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary/20 rounded-full"></span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="grid grid-cols-6 px-6 py-5 bg-surface-container items-center transition-all duration-200 hover:bg-surface-container-high">
+<div class="col-span-2 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Carrier logo" class="w-full h-full object-contain" data-alt="Stylized cargo ship icon as a company logo in high-contrast black and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCv2fTrDHhosSKlbEsY0eX1LwMl3rEY9SUoSPEZd8fsa5-zcAVGgGWv96yEeL18X8R9WTApCL3h2KLelpNQBOmHdt8gyvFvbVVuE5T0nsfQjz7ABPWaGu1zG1xutj3vG7bCEFh88FbTrb_k9Y5f-7GrReP1HmhWL0ry85OFdibVJrFjn1wWs9UyfkV_zkPhnrOM92yRp0DWC_bfg9tqt6RE_xMTdPasWukSLuFD9gaSYx0Q7VmS3tgRnql1DgRCovTGpTZ9UEzk6d4"/>
+</div>
+<div>
+<div class="font-bold text-on-surface">Trans-Continental Exp.</div>
+<div class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Premium Tier</div>
+</div>
+</div>
+<div class="text-lg font-extrabold">$2,380</div>
+<div class="text-sm text-slate-400">+$120 <span class="text-[10px] opacity-50 text-slate-500">PSS</span></div>
+<div class="text-sm font-medium">14 Days</div>
+<div class="flex justify-end">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="grid grid-cols-6 px-6 py-5 bg-surface-container items-center transition-all duration-200 hover:bg-surface-container-high rounded-b-xl">
+<div class="col-span-2 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center p-1">
+<img alt="Carrier logo" class="w-full h-full object-contain" data-alt="Abstract globe logo for a shipping company with modern clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh662Y6urgxLohcfnVMVzwNNka3viq38UyKyJKd2f6KTRZ_i5BmSFd6ICiX3thMLda20OtaWsrl6sFh5MHg7H0otiRG71hdXXwBTMsYyZ8wDP94AiJWOQgDDQhZ-yD6PMENSpYem6H0i7nU-koLNZQQVyfxamKvTLtUTLW9G6DB9tCKazBJE6FJBb19B9DUaQgYG5_mOPAvbvMpppdoW8UmjAv0gk1P0a9Zd4wAc-vjj27YiC0DL3fA7gCW8jSMDnBxLGfasT2wgp7"/>
+</div>
+<div>
+<div class="font-bold text-on-surface">Global Swift Cargo</div>
+<div class="text-[10px] text-error font-bold uppercase tracking-widest">Congestion Warning</div>
+</div>
+</div>
+<div class="text-lg font-extrabold">$1,950</div>
+<div class="text-sm text-slate-400">+$210 <span class="text-[10px] opacity-50 text-slate-500">SUR</span></div>
+<div class="text-sm font-medium">24 Days</div>
+<div class="flex justify-end">
+<div class="flex gap-0.5">
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary/20 rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary/20 rounded-full"></span>
+<span class="w-1.5 h-4 bg-primary/20 rounded-full"></span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Lane Efficiency Matrix & Secondary Stats -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 space-y-4">
+<h2 class="text-xl font-extrabold tracking-tight">Lane Efficiency Matrix</h2>
+<div class="grid grid-cols-4 grid-rows-4 gap-2 bg-surface-container-low p-4 rounded-xl aspect-[16/9]">
+<!-- Row 1 -->
+<div class="bg-primary/40 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform cursor-pointer">
+<span class="text-[10px] font-black opacity-80">SHN &gt; LAX</span>
+<span class="text-xs font-bold">98%</span>
+</div>
+<div class="bg-primary/20 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black opacity-80 text-slate-400">HKG &gt; LON</span>
+<span class="text-xs font-bold">72%</span>
+</div>
+<div class="bg-primary/30 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black opacity-80 text-slate-400">SIN &gt; NYK</span>
+<span class="text-xs font-bold">84%</span>
+</div>
+<div class="bg-error/30 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black opacity-80 text-error">HAM &gt; DUB</span>
+<span class="text-xs font-bold">31%</span>
+</div>
+<!-- Row 2 -->
+<div class="bg-primary/10 rounded-lg col-span-2 row-span-2 p-6 flex flex-col justify-between border border-white/5">
+<div class="text-xs font-black uppercase tracking-widest text-slate-500">High Stability Cluster</div>
+<div class="text-4xl font-black text-on-surface">SE Asia</div>
+<p class="text-[10px] text-slate-500 leading-tight">Average lane efficiency maintains 82.5% through peak season volatility.</p>
+</div>
+<div class="bg-primary/25 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black opacity-80">PUS &gt; OAK</span>
+<span class="text-xs font-bold">76%</span>
+</div>
+<div class="bg-surface-container-highest rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black opacity-80 text-slate-500">TKO &gt; VAN</span>
+<span class="text-xs font-bold">--</span>
+</div>
+<!-- Row 3 -->
+<div class="bg-primary/60 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black">XMN &gt; SAV</span>
+<span class="text-xs font-bold">100%</span>
+</div>
+<div class="bg-primary/15 rounded-lg flex flex-col justify-end p-3 hover:scale-[1.02] transition-transform">
+<span class="text-[10px] font-black opacity-80">SGN &gt; ROT</span>
+<span class="text-xs font-bold">64%</span>
+</div>
+<!-- Row 4 -->
+<div class="bg-surface-container-highest rounded-lg flex flex-col justify-end p-3"></div>
+<div class="bg-primary/20 rounded-lg flex flex-col justify-end p-3"></div>
+<div class="bg-primary/10 rounded-lg flex flex-col justify-end p-3"></div>
+<div class="bg-surface-container-highest rounded-lg flex flex-col justify-end p-3"></div>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-xl font-extrabold tracking-tight">Recent Volatility</h2>
+<div class="space-y-2">
+<div class="bg-surface-container p-4 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div>
+<div class="text-sm font-bold">Suez Canal Delay</div>
+<div class="text-[10px] text-slate-500">Impacting Mediterranean Lanes</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="bg-surface-container p-4 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div>
+<div class="text-sm font-bold">West Coast Fluidity</div>
+<div class="text-[10px] text-slate-500">Rail dwell times decreased 14%</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="bg-surface-container p-4 rounded-xl flex items-center justify-between group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<div>
+<div class="text-sm font-bold">GRI Notification</div>
+<div class="text-[10px] text-slate-500">Multiple carriers announce Feb 1st rate hikes</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+<div class="glass-panel p-6 rounded-xl relative overflow-hidden group">
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<div class="text-xs font-black text-slate-500 mb-4 uppercase tracking-widest">Carrier Reliability Index</div>
+<div class="text-4xl font-black text-primary mb-1">84.2</div>
+<div class="text-xs text-slate-400">+2.1 pts vs previous month</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Bottom Space for Padding -->
+<div class="h-20"></div>
+<!-- 4. Negotiation Assistant (Floating AI Widget) -->
+<div class="fixed bottom-6 right-6 z-[100] w-80">
+<div class="glass-panel shadow-2xl shadow-teal-900/40 rounded-2xl overflow-hidden flex flex-col">
+<div class="bg-surface-container-highest px-4 py-3 flex items-center justify-between border-b border-white/5">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+<span class="text-xs font-bold tracking-tight text-on-surface">Architect Assistant</span>
+</div>
+<button class="text-slate-500 hover:text-on-surface">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<div class="p-4 space-y-4">
+<div class="bg-surface-container-low rounded-xl p-3 text-xs leading-relaxed border-l-2 border-primary">
+                            I've analyzed the SHN-LAX market. Target rates should be below <strong class="text-primary">$2,080</strong> for the next 48 hours to capitalize on the current capacity surplus.
+                        </div>
+<div class="space-y-2">
+<button class="w-full primary-cta-gradient text-on-primary py-2.5 rounded-xl font-bold text-xs shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">rocket_launch</span> Apply Target Rate
+                            </button>
+<button class="w-full bg-surface-variant/40 hover:bg-surface-variant/60 py-2.5 rounded-xl font-bold text-xs text-slate-300 transition-colors">
+                                Generate Negotiation Email
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Responsive Navigation (Bottom Bar) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-[#0B1326] flex items-center justify-around border-t border-white/5 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="text-[10px] font-bold">Index</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="text-[10px] font-bold">Bench</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">route</span>
+<span class="text-[10px] font-bold">Lanes</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+</body></html>
