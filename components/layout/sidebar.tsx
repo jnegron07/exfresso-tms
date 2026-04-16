@@ -18,7 +18,7 @@ import {
 const mainNav = [
   { href: "/dashboard", icon: "dashboard", label: "Dashboard" },
   { href: "/shipments", icon: "local_shipping", label: "Shipments" },
-  { href: "/routes/search", icon: "alt_route", label: "Routes" },
+  { href: "/routes/search", icon: "alt_route", label: "Route Search" },
   { href: "/rate-cards", icon: "payments", label: "Rate Cards" },
   { href: "/network", icon: "public", label: "Network" },
 ];
@@ -144,7 +144,7 @@ export function AppSidebar() {
             "flex items-center w-full rounded-lg transition-colors duration-200",
             isCollapsed
               ? "justify-center py-2"
-              : "justify-between px-3 py-2 hover:bg-white/[0.04]"
+              : "px-3 py-2 hover:bg-white/[0.04]"
           )}
         >
           {!isCollapsed ? (
@@ -164,9 +164,27 @@ export function AppSidebar() {
               JD
             </div>
           )}
-          <SidebarTrigger />
         </div>
       </SidebarFooter>
+
+      {/* Collapse Button */}
+      <div className={cn(
+        "bg-[#1B2A4A] p-2",
+        isCollapsed ? "flex justify-center" : "px-2"
+      )}>
+        <SidebarTrigger
+          className={cn(
+            "w-full rounded-lg transition-colors duration-200",
+            isCollapsed
+              ? "justify-center py-2"
+              : "flex justify-center py-2 hover:bg-white/[0.04]"
+          )}
+        >
+          <span className="material-symbols-outlined !text-[20px] text-slate-400 group-hover:text-slate-200 transition-colors">
+            {isCollapsed ? "chevron_right" : "chevron_left"}
+          </span>
+        </SidebarTrigger>
+      </div>
     </Sidebar>
   );
 }

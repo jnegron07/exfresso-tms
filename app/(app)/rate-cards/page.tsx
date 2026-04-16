@@ -1,5 +1,7 @@
 "use client";
 
+import { RateCardUploader } from "@/components/rate-cards/rate-uploader";
+
 const marketIndex = {
   value: "$2,842.50",
   trend: "3.2%",
@@ -36,6 +38,11 @@ export default function RateCardsPage() {
         <h2 className="text-3xl font-headline font-extrabold text-on-surface tracking-tight">Market Architect | Rate Intelligence</h2>
         <p className="text-on-surface-variant mt-1">Multi-modal AI pathfinding with real-time risk assessment.</p>
       </div>
+
+      {/* 0. Rate Card Uploader */}
+      <section className="mb-12">
+        <RateCardUploader />
+      </section>
 
       {/* 1. Market Index Hero */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
