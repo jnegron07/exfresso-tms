@@ -1,89 +1,100 @@
 "use client";
 
-const urgentShipments = [
+const actionItems = [
   {
-    id: "SHP-092241",
-    route: "Chicago → New York",
-    status: "In Transit",
-    statusClass: "bg-secondary/10 text-secondary",
-    alertIcon: "bolt",
-    alertColor: "text-secondary",
-    alertText: "Estimated delay: 14 mins",
-    actions: [
-      { label: "Re-route", className: "flex-1 py-2 bg-primary/10 text-primary text-xs font-semibold rounded-lg hover:bg-primary/20 transition-all" },
-      { icon: "mail", className: "w-10 h-8 flex items-center justify-center bg-outline-variant/10 rounded-lg" },
-    ],
+    icon: "warning",
+    iconColor: "text-[#ffb4ab]",
+    iconBg: "bg-[#ffb4ab]/10",
+    title: "Overdue milestone: SHP-092241",
+    description: "Customs clearance was expected 6 hours ago at Port of Rotterdam.",
+    age: "6 hours ago",
+    actionLabel: "Escalate",
+    actionClass: "bg-[#ffb4ab]/10 text-[#ffb4ab] hover:bg-[#ffb4ab]/20",
   },
   {
-    id: "SHP-093552",
-    route: "Austin → Seattle",
-    status: "Pending",
-    statusClass: "bg-tertiary/10 text-tertiary",
-    alertIcon: "schedule",
-    alertColor: "text-tertiary",
-    alertText: "Awaiting driver assignment",
-    actions: [
-      { label: "Assign Now", className: "flex-1 py-2 bg-secondary/10 text-secondary text-xs font-semibold rounded-lg hover:bg-secondary/20 transition-all" },
-      { icon: "call", className: "w-10 h-8 flex items-center justify-center bg-outline-variant/10 rounded-lg" },
-    ],
+    icon: "description",
+    iconColor: "text-[#e7c08b]",
+    iconBg: "bg-[#e7c08b]/10",
+    title: "Missing Bill of Lading",
+    description: "SHP-094001 (Busan → Santos) requires BOL upload before departure.",
+    age: "2 hours ago",
+    actionLabel: "Upload",
+    actionClass: "bg-[#e7c08b]/10 text-[#e7c08b] hover:bg-[#e7c08b]/20",
   },
   {
-    id: "SHP-091102",
-    route: "Miami → Atlanta",
-    status: "Arrived",
-    statusClass: "bg-secondary/10 text-secondary",
-    alertIcon: "check_circle",
-    alertColor: "text-secondary",
-    alertText: "Confirmed at hub A4",
-    actions: [
-      { label: "Confirm Delivery", className: "flex-1 py-2 bg-primary/10 text-primary text-xs font-semibold rounded-lg hover:bg-primary/20 transition-all" },
-    ],
+    icon: "timer",
+    iconColor: "text-[#b7c6ee]",
+    iconBg: "bg-[#b7c6ee]/10",
+    title: "Rate card expiring: Trans-Pacific",
+    description: "Oceanic Blue Lines contract expires in 48 hours. Renewal needed.",
+    age: "1 day ago",
+    actionLabel: "Renew",
+    actionClass: "bg-[#b7c6ee]/10 text-[#b7c6ee] hover:bg-[#b7c6ee]/20",
+  },
+  {
+    icon: "gavel",
+    iconColor: "text-[#ffb4ab]",
+    iconBg: "bg-[#ffb4ab]/10",
+    title: "Customs hold: SHP-091102",
+    description: "Documentation flagged at New York port. Additional invoice required.",
+    age: "3 hours ago",
+    actionLabel: "Resolve",
+    actionClass: "bg-[#ffb4ab]/10 text-[#ffb4ab] hover:bg-[#ffb4ab]/20",
+  },
+  {
+    icon: "local_shipping",
+    iconColor: "text-[#6BD8CB]",
+    iconBg: "bg-[#6BD8CB]/10",
+    title: "Driver unassigned: SHP-093552",
+    description: "Austin → Seattle shipment pending driver assignment for pickup.",
+    age: "4 hours ago",
+    actionLabel: "Assign",
+    actionClass: "bg-[#6BD8CB]/10 text-[#6BD8CB] hover:bg-[#6BD8CB]/20",
   },
 ];
 
 export function ActionList() {
   return (
-    <div className="glass rounded-xl flex flex-col h-[500px]">
-      <div className="p-6 border-b border-outline-variant/10 flex justify-between items-center">
-        <h2 className="font-headline font-bold text-lg text-on-surface">Urgent Shipments</h2>
-        <span className="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-secondary transition-colors">
-          more_vert
+    <div className="glass rounded-2xl flex flex-col h-full">
+      <div className="px-6 py-5 border-b border-white/5 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <span className="material-symbols-outlined text-[#ffb4ab] text-lg">priority_high</span>
+          <h2 className="font-headline font-bold text-lg text-on-surface">Action Required</h2>
+        </div>
+        <span className="text-[10px] font-bold px-2.5 py-1 rounded-full bg-[#ffb4ab]/10 text-[#ffb4ab]">
+          {actionItems.length} items
         </span>
       </div>
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {urgentShipments.map((shipment) => (
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+        {actionItems.map((item, idx) => (
           <div
-            key={shipment.id}
-            className="p-4 rounded-xl bg-surface-container-high/40 hover:bg-surface-container-highest/60 transition-colors cursor-pointer"
+            key={idx}
+            className="p-4 rounded-xl bg-surface-container-high/30 hover:bg-surface-container-highest/40 transition-colors group"
           >
-            <div className="flex justify-between items-start mb-3">
-              <div>
-                <h4 className="font-headline font-semibold text-on-surface">{shipment.id}</h4>
-                <p className="text-xs text-on-surface-variant">{shipment.route}</p>
-              </div>
-              <span className={`px-2 py-1 text-[10px] font-bold rounded-full uppercase ${shipment.statusClass}`}>
-                {shipment.status}
-              </span>
-            </div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-start gap-3">
               <span
-                className={`material-symbols-outlined text-xs ${shipment.alertColor}`}
-                style={{ fontVariationSettings: "'FILL' 1" }}
+                className={`material-symbols-outlined ${item.iconColor} ${item.iconBg} p-2 rounded-lg text-lg shrink-0`}
               >
-                {shipment.alertIcon}
+                {item.icon}
               </span>
-              <p className={`text-xs font-medium italic ${shipment.alertColor}`}>{shipment.alertText}</p>
-            </div>
-            <div className="flex gap-2">
-              {shipment.actions.map((action, i) =>
-                action.label ? (
-                  <button key={i} className={action.className}>{action.label}</button>
-                ) : (
-                  <button key={i} className={action.className}>
-                    <span className="material-symbols-outlined text-sm text-on-surface-variant">{action.icon}</span>
-                  </button>
-                )
-              )}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-start justify-between gap-2 mb-1">
+                  <h4 className="text-sm font-semibold text-on-surface leading-tight">
+                    {item.title}
+                  </h4>
+                  <span className="text-[10px] text-on-surface-variant/60 whitespace-nowrap shrink-0">
+                    {item.age}
+                  </span>
+                </div>
+                <p className="text-xs text-on-surface-variant/70 leading-relaxed mb-3">
+                  {item.description}
+                </p>
+                <button
+                  className={`text-[11px] font-bold px-3.5 py-1.5 rounded-lg transition-all ${item.actionClass}`}
+                >
+                  {item.actionLabel}
+                </button>
+              </div>
             </div>
           </div>
         ))}

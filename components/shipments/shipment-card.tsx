@@ -108,10 +108,10 @@ export function ShipmentCard({ shipment }: ShipmentCardProps) {
             <div className="flex items-center gap-3 justify-end group/owner">
               <div className="flex flex-col items-end">
                 <span className="text-[9px] font-bold text-on-surface-variant/40 uppercase tracking-tighter leading-none mb-1">Shipper Partner</span>
-                <span className="text-xs font-black text-on-surface/80 truncate max-w-[100px] text-right">{shipment.shipper}</span>
+                <span className="text-xs font-black text-on-surface/80 truncate max-w-[100px] text-right">{shipment.shipper ?? "—"}</span>
               </div>
               <div className="h-8 w-8 rounded-full border border-secondary/20 bg-secondary/10 flex items-center justify-center overflow-hidden shadow-inner group-hover/owner:bg-secondary/20 transition-colors">
-                <span className="text-[10px] font-black text-secondary">{shipment.shipper.charAt(0)}</span>
+                <span className="text-[10px] font-black text-secondary">{shipment.shipper?.charAt(0)}</span>
               </div>
             </div>
           </div>

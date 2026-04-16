@@ -1,0 +1,38 @@
+[
+  {
+    "id": "USR-001",
+    "name": "María López",
+    "email": "m.lopez@exfresso.com",
+    "role": "admin",
+    "password": "admin123",
+    "companyId": "EXF",
+    "avatarUrl": null
+  },
+  {
+    "id": "USR-002",
+    "name": "Carlos Mendoza",
+    "email": "c.mendoza@exfresso.com",
+    "role": "operations-manager",
+    "password": "ops123",
+    "companyId": "EXF",
+    "avatarUrl": null
+  },
+  {
+    "id": "USR-003",
+    "name": "Ana García",
+    "email": "a.garcia@exfresso.com",
+    "role": "agent",
+    "password": "agent123",
+    "companyId": "EXF",
+    "avatarUrl": null
+  },
+  {
+    "id": "USR-004",
+    "name": "James Wilson",
+    "email": "j.wilson@exfresso.com",
+    "role": "agent",
+    "password": "agent123",
+    "companyId": "EXF",
+    "avatarUrl": null
+  }
+]

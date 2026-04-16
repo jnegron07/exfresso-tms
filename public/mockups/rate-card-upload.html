@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rate Card Upload — Exfresso TMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #0b1326;
+      --surface:       #131b2e;
+      --surface-mid:   #171f33;
+      --surface-high:  #222a3d;
+      --surface-top:   #2d3449;
+      --teal:          #6bd8cb;
+      --teal-dim:      #29a195;
+      --primary:       #b7c6ee;
+      --on-surface:    #dae2fd;
+      --muted:         #c5c6cf;
+      --outline:       #45464e;
+      --amber:         #e7c08b;
+      --amber-bg:      #3c2600;
+      --green:         #4ade80;
+      --green-bg:      #14532d;
+      --yellow:        #fbbf24;
+      --yellow-bg:     #451a03;
+      --error:         #ffb4ab;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--on-surface);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 64px;
+      background: #060e20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 0;
+      gap: 8px;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(69,70,78,.25);
+    }
+    .sidebar-logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--teal-dim));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700; font-size: 13px;
+      color: #0b1326;
+      margin-bottom: 16px;
+    }
+    .nav-icon {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .nav-icon:hover { background: var(--surface-high); color: var(--on-surface); }
+    .nav-icon.active { background: var(--surface-top); color: var(--teal); }
+    .nav-icon svg { width: 20px; height: 20px; }
+
+    /* ── Main ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      background: var(--bg);
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      height: 56px;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 12px;
+      flex-shrink: 0;
+      border-bottom: 1px solid rgba(69,70,78,.2);
+    }
+    .topbar-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px; font-weight: 600;
+      color: var(--on-surface);
+    }
+    .topbar-breadcrumb {
+      font-size: 13px; color: var(--muted);
+    }
+    .topbar-sep { color: var(--outline); margin: 0 4px; }
+
+    /* ── Content ── */
+    .content {
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      max-width: 1280px;
+      width: 100%;
+    }
+
+    .page-header h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--on-surface);
+    }
+    .page-header p {
+      color: var(--muted); font-size: 14px; margin-top: 4px;
+    }
+
+    /* ── Section card ── */
+    .card {
+      background: var(--surface-mid);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-title::before {
+      content: '';
+      display: block;
+      width: 3px; height: 14px;
+      background: var(--teal);
+      border-radius: 2px;
+    }
+
+    /* ── Upload Zone ── */
+    .dropzone {
+      border: 2px dashed var(--teal-dim);
+      border-radius: 12px;
+      padding: 48px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: rgba(107,216,203,.03);
+      cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .dropzone:hover {
+      background: rgba(107,216,203,.07);
+      border-color: var(--teal);
+    }
+    .dropzone-icon {
+      width: 56px; height: 56px;
+      background: rgba(107,216,203,.1);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dropzone-icon svg { width: 30px; height: 30px; color: var(--teal); }
+    .dropzone h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 18px; font-weight: 600;
+      color: var(--on-surface);
+    }
+    .dropzone p { color: var(--muted); font-size: 13px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 20px;
+      border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer; border: none;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--teal-dim);
+      color: var(--teal);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal-dim), #1b2a4a);
+      color: var(--on-surface);
+      font-weight: 600;
+      padding: 11px 24px;
+      font-size: 14px;
+    }
+
+    /* ── Progress items ── */
+    .upload-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+    .upload-item {
+      background: var(--surface-high);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .file-icon {
+      width: 36px; height: 36px;
+      background: var(--surface-top);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .file-icon svg { width: 18px; height: 18px; color: var(--muted); }
+    .file-info { flex: 1; min-width: 0; }
+    .file-name { font-weight: 500; color: var(--on-surface); font-size: 13px; }
+    .file-status { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .progress-bar-wrap {
+      width: 100%; height: 4px;
+      background: var(--surface-top);
+      border-radius: 99px; margin-top: 8px;
+      overflow: hidden;
+    }
+    .progress-bar { height: 100%; border-radius: 99px; }
+    .progress-bar.teal { background: var(--teal); }
+    .progress-bar.green { background: var(--green); }
+    .check-icon {
+      width: 28px; height: 28px;
+      background: var(--green-bg);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .check-icon svg { width: 14px; height: 14px; color: var(--green); }
+    .pct { font-size: 12px; color: var(--muted); flex-shrink: 0; }
+
+    /* ── Two-panel preview ── */
+    .two-panel { display: grid; grid-template-columns: 2fr 3fr; gap: 20px; }
+
+    .doc-preview {
+      background: var(--surface-high);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+    }
+    .doc-preview-thumb {
+      flex: 1;
+      background: linear-gradient(160deg, #1a2440 0%, #0e1828 100%);
+      min-height: 280px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px;
+      padding: 24px;
+      position: relative;
+    }
+    .doc-lines { width: 100%; max-width: 180px; display: flex; flex-direction: column; gap: 6px; }
+    .doc-line { height: 6px; background: rgba(255,255,255,.08); border-radius: 3px; }
+    .doc-line.w100 { width: 100%; }
+    .doc-line.w80  { width: 80%; }
+    .doc-line.w60  { width: 60%; }
+    .doc-line.w90  { width: 90%; }
+    .doc-table-mock { width: 100%; max-width: 180px; margin-top: 10px; }
+    .doc-table-mock .row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-bottom: 4px;
+    }
+    .doc-table-mock .cell { height: 8px; background: rgba(255,255,255,.06); border-radius: 2px; }
+    .doc-table-mock .cell.header { background: rgba(107,216,203,.15); }
+    .doc-preview-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px;
+      border-top: 1px solid rgba(69,70,78,.2);
+      font-size: 12px; color: var(--muted);
+    }
+    .nav-btn {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: var(--surface-top);
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); transition: background .15s;
+    }
+    .nav-btn:hover { background: var(--outline); color: var(--on-surface); }
+    .nav-btn svg { width: 14px; height: 14px; }
+
+    /* ── Data table ── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead th {
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .05em;
+      color: var(--muted);
+      background: var(--surface-high);
+      border-bottom: 1px solid rgba(69,70,78,.25);
+    }
+    thead th:first-child { border-radius: 8px 0 0 0; }
+    thead th:last-child  { border-radius: 0 8px 0 0; }
+    .th-inner { display: flex; align-items: center; gap: 6px; flex-direction: column; align-items: flex-start; }
+    .confidence-chip {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 99px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0;
+      text-transform: none;
+    }
+    .chip-green { background: var(--green-bg); color: var(--green); }
+    .chip-yellow { background: var(--yellow-bg); color: var(--yellow); }
+    .chip-amber { background: var(--amber-bg); color: var(--amber); }
+    .chip-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+    th.unmapped { background: rgba(60,38,0,.35); }
+
+    tbody tr { border-bottom: 1px solid rgba(69,70,78,.12); }
+    tbody tr:hover td { background: rgba(107,216,203,.03); }
+    tbody td {
+      padding: 11px 12px;
+      color: var(--on-surface);
+    }
+    tbody td.amber-col { background: rgba(60,38,0,.2); color: var(--amber); }
+    .editable-cell { display: flex; align-items: center; gap: 6px; }
+    .edit-hint { opacity: 0; transition: opacity .15s; }
+    tbody tr:hover .edit-hint { opacity: 1; }
+    .edit-hint svg { width: 12px; height: 12px; color: var(--teal); }
+
+    /* ── Field Mapping ── */
+    .mapping-row {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--surface-high);
+      border-radius: 10px;
+      padding: 16px 20px;
+      border: 1px solid rgba(231,192,139,.2);
+    }
+    .col-pill {
+      background: var(--amber-bg);
+      color: var(--amber);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      white-space: nowrap;
+    }
+    .connector {
+      flex: 1;
+      display: flex; align-items: center;
+      position: relative; min-width: 60px;
+    }
+    .connector-line {
+      flex: 1; height: 1px;
+      background: repeating-linear-gradient(90deg, var(--teal-dim) 0px, var(--teal-dim) 6px, transparent 6px, transparent 12px);
+    }
+    .connector svg { color: var(--teal); flex-shrink: 0; width: 16px; height: 16px; }
+    .field-select {
+      background: var(--surface-top);
+      color: var(--on-surface);
+      border: 1px solid rgba(69,70,78,.4);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 13px; font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      min-width: 200px;
+    }
+    .field-select:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(107,216,203,.1); }
+    .btn-ghost {
+      background: var(--surface-top);
+      border: 1px solid rgba(69,70,78,.35);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); background: rgba(107,216,203,.05); }
+    .label-sm { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+    /* ── Confirm card ── */
+    .confirm-card {
+      background: var(--surface-mid);
+      border-radius: 12px;
+      padding: 24px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+    .stat-chip {
+      background: var(--surface-top);
+      border-radius: 99px;
+      padding: 8px 16px;
+      font-size: 13px; font-weight: 500;
+      color: var(--on-surface);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .stat-chip svg { width: 14px; height: 14px; color: var(--teal); }
+    .confirm-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .link-teal {
+      font-size: 13px; color: var(--teal);
+      text-decoration: underline; cursor: pointer; background: none; border: none;
+    }
+    .disclaimer { font-size: 11px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-logo">EX</div>
+
+  <div class="nav-icon" title="Dashboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+  </div>
+  <div class="nav-icon" title="Shipments">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+  </div>
+  <div class="nav-icon active" title="Rate Cards">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+  </div>
+  <div class="nav-icon" title="Routes">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 7v10M5.5 17.5L11 8M12.5 7.5l6 10"/></svg>
+  </div>
+  <div class="nav-icon" title="Analytics">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+  </div>
+  <div class="nav-icon" title="Network">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  </div>
+</aside>
+
+<!-- Main -->
+<div class="main">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <span class="topbar-breadcrumb">Rate Cards</span>
+    <span class="topbar-sep">›</span>
+    <span class="topbar-title">Upload</span>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <h1>Rate Card Upload</h1>
+      <p>Import and extract rate data from your documents using AI.</p>
+    </div>
+
+    <!-- SECTION 1: Upload Zone -->
+    <div class="card">
+      <div class="card-title">Upload Files</div>
+
+      <div class="dropzone">
+        <div class="dropzone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6M12 12v7M9 16l3-4 3 4"/>
+          </svg>
+        </div>
+        <h3>Drop your rate sheet here</h3>
+        <p>Supports PDF, Excel, CSV &nbsp;·&nbsp; Multiple files accepted</p>
+        <button class="btn btn-outline" style="margin-top:4px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Browse Files
+        </button>
+      </div>
+
+      <div class="upload-list">
+        <!-- File 1 -->
+        <div class="upload-item">
+          <div class="file-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          </div>
+          <div class="file-info">
+            <div class="file-name">carrier_rates_Q2.xlsx</div>
+            <div class="file-status" style="color:var(--teal)">Analyzing with AI…</div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar teal" style="width:78%"></div>
+            </div>
+          </div>
+          <span class="pct">78%</span>
+        </div>
+        <!-- File 2 -->
+        <div class="upload-item">
+          <div class="file-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          </div>
+          <div class="file-info">
+            <div class="file-name">ocean_freight_apr.pdf</div>
+            <div class="file-status" style="color:var(--green)">Ready for review</div>
+            <div class="progress-bar-wrap">
+              <div class="progress-bar green" style="width:100%"></div>
+            </div>
+          </div>
+          <div class="check-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 2: AI Analysis Preview -->
+    <div class="card">
+      <div class="card-title">AI Analysis Preview</div>
+      <div class="two-panel">
+
+        <!-- Left: document preview -->
+        <div class="doc-preview">
+          <div class="doc-preview-thumb">
+            <div class="doc-lines">
+              <div class="doc-line w80"></div>
+              <div class="doc-line w100"></div>
+              <div class="doc-line w60"></div>
+            </div>
+            <div class="doc-table-mock">
+              <div class="row">
+                <div class="cell header"></div><div class="cell header"></div><div class="cell header"></div>
+              </div>
+              <div class="row"><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+              <div class="row"><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+              <div class="row"><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+              <div class="row"><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+              <div class="row"><div class="cell"></div><div class="cell"></div><div class="cell"></div></div>
+            </div>
+            <div style="font-size:11px; color:var(--muted); margin-top:12px">ocean_freight_apr.pdf</div>
+          </div>
+          <div class="doc-preview-nav">
+            <button class="nav-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span>Page 1 of 4</span>
+            <button class="nav-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: extracted table -->
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <div class="th-inner">
+                    Origin Port
+                    <span class="confidence-chip chip-green"><span class="chip-dot"></span>High confidence</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-inner">
+                    Destination Port
+                    <span class="confidence-chip chip-green"><span class="chip-dot"></span>High confidence</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-inner">
+                    Carrier
+                    <span class="confidence-chip chip-green"><span class="chip-dot"></span>High confidence</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-inner">
+                    Rate/KG
+                    <span class="confidence-chip chip-green"><span class="chip-dot"></span>High confidence</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-inner">
+                    Rate/CBM
+                    <span class="confidence-chip chip-yellow"><span class="chip-dot"></span>Needs review</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-inner">
+                    Valid From
+                    <span class="confidence-chip chip-green"><span class="chip-dot"></span>High confidence</span>
+                  </div>
+                </th>
+                <th>
+                  <div class="th-inner">
+                    Valid To
+                    <span class="confidence-chip chip-green"><span class="chip-dot"></span>High confidence</span>
+                  </div>
+                </th>
+                <th class="unmapped">
+                  <div class="th-inner">
+                    Surcharge Type
+                    <span class="confidence-chip chip-amber"><span class="chip-dot"></span>Unmapped</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Shanghai (PVG)</td>
+                <td>Los Angeles (LAX)</td>
+                <td>Maersk</td>
+                <td>$0.85 / kg</td>
+                <td class="editable-cell">$45.00 / cbm<span class="edit-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></span></td>
+                <td>Apr 1, 2026</td>
+                <td>Jun 30, 2026</td>
+                <td class="amber-col">BAF</td>
+              </tr>
+              <tr>
+                <td>Rotterdam (RTM)</td>
+                <td>New York (JFK)</td>
+                <td>CMA CGM</td>
+                <td>$0.72 / kg</td>
+                <td>$38.50 / cbm</td>
+                <td>Apr 1, 2026</td>
+                <td>Jun 30, 2026</td>
+                <td class="amber-col">CAF</td>
+              </tr>
+              <tr>
+                <td>Hamburg (HAM)</td>
+                <td>Singapore (SIN)</td>
+                <td>Hapag-Lloyd</td>
+                <td>$0.91 / kg</td>
+                <td>$52.00 / cbm</td>
+                <td>Apr 15, 2026</td>
+                <td>Jun 30, 2026</td>
+                <td class="amber-col">PSS</td>
+              </tr>
+              <tr>
+                <td>Busan (PUS)</td>
+                <td>Felixstowe (FXT)</td>
+                <td>Evergreen</td>
+                <td>$0.68 / kg</td>
+                <td>$41.00 / cbm</td>
+                <td>May 1, 2026</td>
+                <td>Jun 30, 2026</td>
+                <td class="amber-col">GRI</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: Field Mapping -->
+    <div class="card">
+      <div class="card-title">Field Mapping</div>
+      <div class="mapping-row">
+        <span class="label-sm">Unmapped column:</span>
+        <div class="col-pill">Surcharge Type</div>
+        <div class="connector">
+          <div class="connector-line"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div>
+          <div style="font-size:11px; color:var(--muted); margin-bottom:4px">What is this column?</div>
+          <select class="field-select">
+            <option value="">— Select field type —</option>
+            <option>Origin Port</option>
+            <option>Destination Port</option>
+            <option>Carrier</option>
+            <option>Rate per KG</option>
+            <option>Rate per CBM</option>
+            <option>Valid From</option>
+            <option>Valid To</option>
+            <option selected>Surcharge Type</option>
+            <option>Transit Time</option>
+            <option>Minimum Charge</option>
+            <option>Currency</option>
+          </select>
+        </div>
+        <button class="btn-ghost" style="margin-left:auto">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;vertical-align:middle;margin-right:5px"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M22 2 12 12M17 2h5v5"/></svg>
+          Auto-map remaining
+        </button>
+      </div>
+    </div>
+
+    <!-- SECTION 4: Confirm & Save -->
+    <div class="confirm-card">
+      <div>
+        <div style="font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; font-weight:600; margin-bottom:12px">Review &amp; Save</div>
+        <div class="stat-chips">
+          <div class="stat-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="12" y2="17"/></svg>
+            142 Rates Extracted
+          </div>
+          <div class="stat-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            38 Routes Covered
+          </div>
+          <div class="stat-chip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Validity: Apr 1 – Jun 30, 2026
+          </div>
+        </div>
+      </div>
+      <div class="confirm-actions">
+        <button class="btn btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save to My Rate Cards
+        </button>
+        <button class="link-teal">Share with Network</button>
+        <span class="disclaimer">AI extraction may contain errors. Please review before saving.</span>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+</body>
+</html>

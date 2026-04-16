@@ -3,9 +3,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-inter), sans-serif;
-  --font-headline: var(--font-plus-jakarta), sans-serif;
-  --font-body: var(--font-inter), sans-serif;
+  --font-sans: 'Satoshi', var(--font-plus-jakarta), sans-serif;
+  --font-headline: var(--font-plus-jakarta), 'Satoshi', sans-serif;
+  --font-body: 'Satoshi', sans-serif;
   
   /* Brand tokens */
   --color-brand-navy: #1B2A4A;
@@ -76,23 +76,23 @@
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  --background: #f4f6f8;
+  --foreground: #1B2A4A;
   --card: #ffffff;
-  --card-foreground: #0f172a;
+  --card-foreground: #1B2A4A;
   --popover: #ffffff;
-  --popover-foreground: #0f172a;
+  --popover-foreground: #1B2A4A;
   --primary: #1B2A4A;
   --primary-foreground: #ffffff;
   --secondary: #0D9488;
   --secondary-foreground: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
+  --muted: #eef1f5;
+  --muted-foreground: #5a6a80;
+  --accent: #eef1f5;
   --accent-foreground: #1B2A4A;
   --destructive: #ef4444;
-  --border: #e2e8f0;
-  --input: #e2e8f0;
+  --border: #dfe4ea;
+  --input: #dfe4ea;
   --ring: #0D9488;
   --radius: 0.625rem;
 }
@@ -136,6 +136,16 @@
   }
   html {
     @apply font-sans;
+    font-feature-settings: "ss01", "ss02", "cv01";
+  }
+  h1, .h1 {
+    @apply font-headline text-3xl md:text-4xl font-extrabold tracking-tight text-[#1B2A4A] dark:text-white mb-6;
+  }
+  h2, .h2 {
+    @apply font-headline text-xl md:text-2xl font-bold tracking-tight text-[#1B2A4A] dark:text-on-surface;
+  }
+  h3, .h3 {
+    @apply font-headline text-lg font-semibold text-[#1B2A4A] dark:text-on-surface;
   }
 }
 
@@ -166,4 +176,31 @@
 
 .animate-dash {
   animation: dash 3s linear infinite;
+}
+
+/* Mapbox popup overrides */
+.mapboxgl-popup-content {
+  background: rgba(23, 31, 51, 0.95) !important;
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(69, 70, 78, 0.3) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+.mapboxgl-popup-close-button {
+  color: #c5c6cf !important;
+  font-size: 18px !important;
+  padding: 4px 8px !important;
+  right: 4px !important;
+  top: 4px !important;
+}
+
+.mapboxgl-popup-close-button:hover {
+  color: #dae2fd !important;
+  background: transparent !important;
+}
+
+.mapboxgl-popup-tip {
+  border-top-color: rgba(23, 31, 51, 0.95) !important;
 }

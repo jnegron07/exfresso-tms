@@ -1,22 +1,34 @@
 "use client";
-
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "./sidebar";
 import { TopBar } from "./top-bar";
 import { QueryProvider } from "@/lib/providers/query-provider";
+import { CommandPalette } from "./command-palette";
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   return (
     <QueryProvider>
-      <div className="min-h-screen bg-surface text-on-surface font-sans">
-        {/* Fixed Sidebar */}
-        <AppSidebar />
-        {/* Fixed TopBar (offset by sidebar width) */}
-        <TopBar />
-        {/* Main Content (offset by sidebar + topbar) */}
-        <main className="ml-64 pt-20 min-h-screen">
-          {children}
-        </main>
-      </div>
+      <SidebarProvider defaultOpen={true}>
+        <div className="flex h-screen w-full overflow-hidden bg-[#f4f6f8] dark:bg-[#0b1326] font-sans">
+          {/* Sidebar */}
+          <AppSidebar />
+          
+          <SidebarInset className="flex flex-col flex-1 min-w-0">
+            {/* Top Bar */}
+            <TopBar />
+            
+            {/* Main Content Area */}
+            <main className="flex-1 w-full flex flex-col items-center overflow-auto px-6 py-6 md:px-8">
+              <div className="w-full max-w-[1440px] animate-in fade-in slide-in-from-bottom-2 duration-700">
+                {children}
+              </div>
+            </main>
+          </SidebarInset>
+          
+          {/* Command Palette Overlay */}
+          <CommandPalette />
+        </div>
+      </SidebarProvider>
     </QueryProvider>
   );
 }

@@ -1,38 +1,68 @@
 [
   {
-    "id": "p-001",
-    "name": "Global Tech Manufacturing",
-    "type": "Shipper",
-    "country": "China",
-    "rating": 4.8,
-    "lastShipment": "2024-04-02",
-    "contact": "Li Wei",
-    "email": "l.wei@gtm.cn"
-  },
-  {
-    "id": "p-002",
-    "name": "Advanced Electronics Inc.",
-    "type": "Consignee",
-    "country": "USA",
-    "rating": 4.9,
-    "lastShipment": "2024-04-05",
-    "contact": "Sarah Jones",
-    "email": "s.jones@adelec.com"
-  },
-  {
-    "id": "p-003",
-    "name": "Maersk Line",
-    "type": "Carrier",
+    "id": "PTR-001",
+    "companyName": "Maersk Line",
     "country": "Denmark",
-    "rating": 4.7,
-    "status": "Platinum Partner"
+    "ports": ["DEHAM", "NLRTM", "CNSHA", "USLAX", "SGSIN", "USNYC"],
+    "services": ["FCL", "LCL", "Refrigerated", "Dangerous Goods"],
+    "connectionStatus": "connected",
+    "sharedRateCards": ["RC-001", "RC-002"],
+    "contactName": "Henrik Sørensen",
+    "contactEmail": "h.sorensen@maersk.com"
   },
   {
-    "id": "p-004",
-    "name": "Hapag-Lloyd",
-    "type": "Carrier",
+    "id": "PTR-002",
+    "companyName": "MSC Mediterranean Shipping",
+    "country": "Switzerland",
+    "ports": ["DEHAM", "NLRTM", "USMIA", "BRSSZ", "AEDJB", "USNYC"],
+    "services": ["FCL", "LCL", "Reefer"],
+    "connectionStatus": "connected",
+    "sharedRateCards": ["RC-003"],
+    "contactName": "Elena Ferrara",
+    "contactEmail": "e.ferrara@msc.com"
+  },
+  {
+    "id": "PTR-003",
+    "companyName": "Emirates SkyCargo",
+    "country": "United Arab Emirates",
+    "ports": ["AEJEA", "HKHKG", "CNPVG", "USJFK", "DEHAM", "INBOM"],
+    "services": ["Air Freight", "Express", "Dangerous Goods", "Pharma"],
+    "connectionStatus": "connected",
+    "sharedRateCards": ["RC-004"],
+    "contactName": "Fatima Al-Rashid",
+    "contactEmail": "f.alrashid@skycargo.ae"
+  },
+  {
+    "id": "PTR-004",
+    "companyName": "DB Schenker Road",
     "country": "Germany",
-    "rating": 4.6,
-    "status": "Gold Partner"
+    "ports": ["DEHAM", "NLRTM", "FRPAR", "ESBCN", "MXMTY"],
+    "services": ["FTL", "LTL", "Cross-docking", "Temperature Controlled"],
+    "connectionStatus": "connected",
+    "sharedRateCards": ["RC-005"],
+    "contactName": "Karin Weber",
+    "contactEmail": "k.weber@dbschenker.com"
+  },
+  {
+    "id": "PTR-005",
+    "companyName": "Kuehne + Nagel Asia Pacific",
+    "country": "Singapore",
+    "ports": ["SGSIN", "HKHKG", "CNSHA", "JPNRT", "VNSGN", "KRPUS"],
+    "services": ["Customs Clearance", "Warehousing", "Last Mile", "Project Cargo"],
+    "connectionStatus": "pending",
+    "sharedRateCards": [],
+    "contactName": "Wei Lim",
+    "contactEmail": "w.lim@kuehne-nagel.com"
+  },
+  {
+    "id": "PTR-006",
+    "companyName": "COSCO Shipping Lines",
+    "country": "China",
+    "ports": ["CNSHA", "CNPVG", "KRPUS", "USLAX", "NLRTM", "SGSIN"],
+    "services": ["FCL", "Bulk", "Project Cargo"],
+    "connectionStatus": "none",
+    "sharedRateCards": [],
+    "contactName": "Liu Hao",
+    "contactEmail": "l.hao@cosco.com"
   }
 ]

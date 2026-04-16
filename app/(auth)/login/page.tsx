@@ -1,145 +1,370 @@
 "use client";
 
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+const featureChips = [
+  { label: "AI Route Optimization", icon: "alt_route", accent: true },
+  { label: "Live Shipment Tracking", icon: "location_on" },
+  { label: "Rate Intelligence", icon: "trending_up", accent: true },
+  { label: "Document OCR", icon: "document_scanner" },
+  { label: "Carrier Network", icon: "hub" },
+  { label: "Predictive ETAs", icon: "schedule", accent: true },
+  { label: "Multi-modal Freight", icon: "directions_boat" },
+  { label: "Customs & Compliance", icon: "verified_user" },
+  { label: "Fleet Analytics", icon: "monitoring", accent: true },
+  { label: "Smart Invoicing", icon: "receipt_long" },
+  { label: "Carbon Footprint", icon: "eco" },
+  { label: "Real-time Alerts", icon: "notifications_active", accent: true },
+];
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setError(data.error);
+        return;
+      }
+
+      router.push("/dashboard");
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
-    <div className="min-h-screen grid lg:grid-cols-2 bg-surface selection:bg-secondary/30">
-      {/* Left Column: Form */}
-      <div className="flex items-center justify-center p-8 lg:p-12 relative overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
-        
-        <motion.div 
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full max-w-sm flex flex-col gap-10 relative z-10"
+    <div className="min-h-screen flex bg-[#0b1326] selection:bg-[#0D9488]/30">
+      {/* Left Column: Login Form — 45% */}
+      <div className="w-full lg:w-[45%] flex items-center justify-center p-8 lg:p-16 relative">
+        <div className="absolute top-[-15%] left-[-10%] w-[500px] h-[500px] bg-[#0D9488]/[0.03] rounded-full blur-[120px] pointer-events-none" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-full max-w-[380px] flex flex-col gap-8 relative z-10"
         >
-          <div className="flex items-center gap-4">
-            <div className="h-14 w-14 rounded-[1.25rem] bg-gradient-to-br from-secondary to-secondary-container flex items-center justify-center shadow-2xl shadow-secondary/20 group">
-              <span className="text-3xl font-black italic text-on-secondary group-hover:scale-110 transition-transform">Ex</span>
-            </div>
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <img
+              src="/icon.svg"
+              alt="Exfresso"
+              className="h-10 w-10 group-hover:scale-105 transition-transform"
+            />
             <div className="flex flex-col">
-              <span className="text-2xl font-headline font-black tracking-tighter text-on-surface">Exfresso</span>
-              <span className="text-[10px] uppercase tracking-[0.4em] text-on-surface-variant font-bold opacity-40">Tactical Center</span>
+              <span className="text-xl font-headline font-extrabold tracking-tight text-white">
+                Exfresso
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.35em] text-slate-500 font-semibold">
+                Transport Management
+              </span>
             </div>
+          </Link>
+
+          {/* Heading */}
+          <div className="flex flex-col gap-2 pt-2">
+            <h1 className="text-3xl font-headline font-extrabold text-white tracking-tight !mb-0">
+              Welcome back
+            </h1>
+            <p className="text-slate-400 text-sm font-medium leading-relaxed">
+              Sign in to your logistics command center.
+            </p>
           </div>
 
-          <div className="flex flex-col gap-3 pt-4">
-            <h1 className="text-4xl font-headline font-black italic text-on-surface tracking-tighter">Secure Uplink.</h1>
-            <p className="text-on-surface-variant font-medium leading-relaxed opacity-70 italic">Elevate your logistics operations with AI-augmented intelligence.</p>
-          </div>
+          {/* Error message */}
+          <AnimatePresence mode="wait">
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -8, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: "auto" }}
+                exit={{ opacity: 0, y: -8, height: 0 }}
+                transition={{ duration: 0.2 }}
+                className="flex items-start gap-3 px-4 py-3 rounded-xl bg-rose-500/[0.08] border border-rose-500/[0.15]"
+              >
+                <span
+                  className="material-symbols-outlined text-rose-400 !text-[18px] mt-0.5 shrink-0"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  error
+                </span>
+                <span className="text-rose-300 text-sm font-medium">
+                  {error}
+                </span>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-2.5">
-              <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant opacity-40 ml-1">Network Identifier</Label>
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            {/* Email */}
+            <div className="grid gap-2">
+              <Label
+                htmlFor="email"
+                className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 ml-0.5"
+              >
+                Email address
+              </Label>
               <div className="relative group">
-                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-30 group-focus-within:text-secondary group-focus-within:opacity-100 transition-all">alternate_email</span>
-                <Input 
-                  id="email" 
-                  placeholder="operator@exfresso.ai" 
-                  type="email" 
-                  className="pl-12 h-14 bg-surface-container-highest/20 border-white/5 border rounded-2xl focus-visible:ring-1 focus-visible:ring-secondary/50 focus:bg-surface-container-highest/40 text-on-surface font-medium transition-all"
+                <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-[#0D9488] transition-colors !text-[18px]">
+                  mail
+                </span>
+                <Input
+                  id="email"
+                  placeholder="you@exfresso.com"
+                  type="email"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError("");
+                  }}
+                  required
+                  className={`pl-11 h-12 bg-white/[0.03] border rounded-xl focus-visible:ring-1 focus-visible:ring-[#0D9488]/40 focus:bg-white/[0.05] focus:border-[#0D9488]/30 text-white placeholder:text-slate-600 font-medium transition-all ${
+                    error
+                      ? "border-rose-500/30"
+                      : "border-white/[0.06]"
+                  }`}
                 />
               </div>
             </div>
-            <div className="grid gap-2.5">
-              <div className="flex items-center justify-between ml-1">
-                <Label htmlFor="password" title="password" className="text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant opacity-40">Encryption Key</Label>
-                <Link href="#" className="text-[10px] font-black text-secondary hover:underline italic tracking-widest uppercase">Reset</Link>
+
+            {/* Password */}
+            <div className="grid gap-2">
+              <div className="flex items-center justify-between ml-0.5">
+                <Label
+                  htmlFor="password"
+                  className="text-[11px] font-semibold uppercase tracking-wider text-slate-500"
+                >
+                  Password
+                </Label>
+                <Link
+                  href="#"
+                  className="text-[11px] font-semibold text-[#0D9488] hover:text-[#5EEAD4] transition-colors"
+                >
+                  Forgot password?
+                </Link>
               </div>
               <div className="relative group">
-                <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant opacity-30 group-focus-within:text-secondary group-focus-within:opacity-100 transition-all">lock</span>
-                <Input 
-                  id="password" 
-                  placeholder="••••••••" 
-                  type="password" 
-                  className="pl-12 h-14 bg-surface-container-highest/20 border-white/5 border rounded-2xl focus-visible:ring-1 focus-visible:ring-secondary/50 focus:bg-surface-container-highest/40 text-on-surface font-medium transition-all"
+                <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-[#0D9488] transition-colors !text-[18px]">
+                  lock
+                </span>
+                <Input
+                  id="password"
+                  placeholder="••••••••"
+                  type="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    if (error) setError("");
+                  }}
+                  required
+                  className={`pl-11 h-12 bg-white/[0.03] border rounded-xl focus-visible:ring-1 focus-visible:ring-[#0D9488]/40 focus:bg-white/[0.05] focus:border-[#0D9488]/30 text-white placeholder:text-slate-600 font-medium transition-all ${
+                    error
+                      ? "border-rose-500/30"
+                      : "border-white/[0.06]"
+                  }`}
                 />
               </div>
             </div>
-            <Button className="mt-4 h-15 rounded-2xl bg-gradient-to-br from-secondary to-secondary-container hover:from-secondary/90 hover:to-secondary-container/90 text-on-secondary font-headline font-black italic text-lg tracking-tight shadow-2xl shadow-secondary/20 flex items-center gap-3 group active:scale-[0.98] transition-all">
-              Initiate Uplink 
-              <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-500">arrow_forward</span>
+
+            {/* Submit */}
+            <Button
+              type="submit"
+              disabled={loading}
+              className="mt-2 h-12 rounded-xl bg-[#0D9488] hover:bg-[#0D9488]/90 disabled:opacity-50 text-white font-headline font-bold text-sm tracking-wide shadow-lg shadow-[#0D9488]/15 flex items-center gap-2 group active:scale-[0.98] transition-all"
+            >
+              {loading ? (
+                <>
+                  <span className="material-symbols-outlined !text-[18px] animate-spin">
+                    progress_activity
+                  </span>
+                  Signing in...
+                </>
+              ) : (
+                <>
+                  Sign In
+                  <span className="material-symbols-outlined !text-[18px] group-hover:translate-x-1 transition-transform duration-300">
+                    arrow_forward
+                  </span>
+                </>
+              )}
             </Button>
+          </form>
+
+          {/* Footer links */}
+          <div className="flex items-center justify-center gap-2 text-sm pt-2">
+            <span className="text-slate-500 font-medium">
+              Don&apos;t have an account?
+            </span>
+            <Link
+              href="#"
+              className="font-semibold text-white hover:text-[#0D9488] transition-colors"
+            >
+              Request Access
+            </Link>
           </div>
 
-          <div className="flex items-center justify-center gap-3 text-sm py-4">
-            <span className="text-on-surface-variant opacity-40 font-medium italic">New to Exfresso?</span>
-            <Link href="#" className="font-black text-on-surface hover:text-secondary italic tracking-tight transition-colors">Request Access</Link>
-          </div>
-
-          <div className="pt-8 border-t border-white/5 flex flex-col gap-4">
-            <div className="flex items-center gap-3 text-[10px] text-on-surface-variant font-black uppercase tracking-[0.2em] opacity-30">
-              <span className="material-symbols-outlined text-green-500 text-base" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span> 
-              Encrypted Corporate Environment
-            </div>
+          {/* Trust badge */}
+          <div className="pt-6 border-t border-white/[0.04] flex items-center gap-2.5 text-[10px] text-slate-600 font-semibold uppercase tracking-widest">
+            <span
+              className="material-symbols-outlined text-emerald-500/60 !text-[16px]"
+              style={{ fontVariationSettings: "'FILL' 1" }}
+            >
+              verified_user
+            </span>
+            256-bit encrypted environment
           </div>
         </motion.div>
       </div>
 
-      {/* Right Column: Visual Brand Content */}
-      <div className="hidden lg:flex relative bg-surface-container-low items-center justify-center overflow-hidden p-16">
-        <div className="absolute inset-0 opacity-10" 
-             style={{ backgroundImage: "radial-gradient(circle, #6bd8cb 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
-        
-        <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-primary/5 pointer-events-none" />
+      {/* Right Column: Feature Showcase — 55% */}
+      <div className="hidden lg:flex w-[55%] relative bg-[#0f1a30] items-center justify-center overflow-hidden p-12 xl:p-20">
+        {/* Dot pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, #6bd8cb 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
 
-        <div className="relative z-10 flex flex-col gap-12 max-w-lg">
-          <div className="relative">
-            <div className="absolute -top-24 -left-24 h-64 w-64 rounded-full border border-secondary/10 animate-pulse pointer-events-none" />
-            <h2 className="text-6xl font-headline font-black italic text-on-surface leading-[0.9] tracking-tighter">
-              Precision <br/> 
-              Logistics <br/>
-              <span className="text-secondary drop-shadow-[0_0_20px_rgba(107,216,203,0.3)]">AI Augmented.</span>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0D9488]/[0.06] via-transparent to-[#1B2A4A]/[0.08] pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col gap-12 max-w-xl w-full">
+          {/* Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex flex-col gap-4"
+          >
+            <h2 className="text-4xl xl:text-5xl font-headline font-extrabold text-white leading-[1.1] tracking-tight !mb-0">
+              Freight Intelligence,{" "}
+              <span className="text-[#0D9488] drop-shadow-[0_0_24px_rgba(13,148,136,0.25)]">
+                Reimagined.
+              </span>
             </h2>
-          </div>
+            <p className="text-slate-400 text-base font-medium leading-relaxed max-w-md">
+              AI-powered logistics platform that transforms how you manage
+              shipments, optimize routes, and control costs.
+            </p>
+          </motion.div>
 
-          <div className="grid gap-8">
-            <div className="bg-surface-container-highest/20 backdrop-blur-2xl rounded-3xl p-8 border border-white/5 flex gap-6 items-start shadow-2xl transition-transform hover:-translate-y-1 duration-500 cursor-default">
-              <div className="h-12 w-12 rounded-2xl bg-secondary/20 flex items-center justify-center shrink-0 border border-secondary/20">
-                <span className="material-symbols-outlined text-2xl text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>auto_awesome</span>
+          {/* Feature Chips */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex flex-wrap gap-2.5"
+          >
+            {featureChips.map((chip, i) => (
+              <motion.div
+                key={chip.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 0.5 + i * 0.05 }}
+                className={`
+                  inline-flex items-center gap-2 px-4 py-2.5 rounded-full
+                  backdrop-blur-sm cursor-default
+                  transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg
+                  ${
+                    chip.accent
+                      ? "bg-[#0D9488]/[0.08] border border-[#0D9488]/[0.15] text-[#5EEAD4] hover:bg-[#0D9488]/[0.12] hover:shadow-[#0D9488]/10"
+                      : "bg-white/[0.04] border border-white/[0.06] text-slate-300 hover:bg-white/[0.07] hover:shadow-white/5"
+                  }
+                `}
+              >
+                <span
+                  className={`material-symbols-outlined !text-[16px] ${
+                    chip.accent ? "text-[#0D9488]" : "text-slate-500"
+                  }`}
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  {chip.icon}
+                </span>
+                <span className="text-[13px] font-semibold whitespace-nowrap">
+                  {chip.label}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Stats card */}
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
+            className="flex items-center gap-8 bg-white/[0.03] backdrop-blur-xl border border-white/[0.05] rounded-2xl px-8 py-5 max-w-md"
+          >
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-[#0D9488]/[0.1] flex items-center justify-center border border-[#0D9488]/[0.12]">
+                <span
+                  className="material-symbols-outlined text-[#0D9488] !text-[20px]"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  package_2
+                </span>
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-on-surface font-headline font-black italic text-xl tracking-tight leading-none">Normalizing the World</span>
-                <p className="text-on-surface-variant/60 text-sm font-medium leading-relaxed italic">
-                  "Automatically normalize diverse carrier manifests and routing parameters into a high-density unified ledger."
-                </p>
+              <div className="flex flex-col">
+                <span className="text-white font-headline font-bold text-lg leading-tight">
+                  3,200+
+                </span>
+                <span className="text-slate-500 text-[11px] font-medium">
+                  Shipments optimized
+                </span>
               </div>
             </div>
-            
-            <div className="bg-surface-container-highest/20 backdrop-blur-2xl rounded-3xl p-8 border border-white/5 flex gap-6 items-start shadow-2xl transition-transform hover:-translate-y-1 duration-500 cursor-default">
-              <div className="h-12 w-12 rounded-2xl bg-primary/20 flex items-center justify-center shrink-0 border border-primary/20">
-                <span className="material-symbols-outlined text-2xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>hub</span>
+
+            <div className="h-8 w-px bg-white/[0.06]" />
+
+            <div className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-[#0D9488]/[0.1] flex items-center justify-center border border-[#0D9488]/[0.12]">
+                <span
+                  className="material-symbols-outlined text-[#0D9488] !text-[20px]"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  speed
+                </span>
               </div>
-              <div className="flex flex-col gap-2">
-                <span className="text-on-surface font-headline font-black italic text-xl tracking-tight leading-none">Global Synchronization</span>
-                <p className="text-on-surface-variant/60 text-sm font-medium leading-relaxed italic">
-                  "End-to-end visibility across all logistics modes with active predictive milestone intelligence."
-                </p>
+              <div className="flex flex-col">
+                <span className="text-white font-headline font-bold text-lg leading-tight">
+                  98.7%
+                </span>
+                <span className="text-slate-500 text-[11px] font-medium">
+                  On-time delivery
+                </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Floating AI Monitor */}
-        <motion.div 
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-16 right-16 bg-surface-container-high/80 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-[1.5rem] shadow-2xl flex items-center gap-4 group"
-        >
-          <div className="h-10 w-10 rounded-xl bg-secondary/10 flex items-center justify-center">
-            <span className="material-symbols-outlined text-secondary animate-pulse" style={{ fontVariationSettings: "'FILL' 1" }}>monitoring</span>
-          </div>
-          <div>
-            <div className="text-[10px] font-black uppercase tracking-widest text-on-surface-variant opacity-40 leading-none mb-1">Live Intelligence</div>
-            <div className="text-xs font-black text-on-surface italic">Uplink Status: Optimized</div>
-          </div>
-        </motion.div>
+        <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-[#0D9488]/[0.03] rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute -top-20 -right-20 w-[300px] h-[300px] bg-[#1B2A4A]/20 rounded-full blur-[80px] pointer-events-none" />
       </div>
     </div>
   );

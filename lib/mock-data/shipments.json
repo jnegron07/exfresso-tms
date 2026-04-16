@@ -1,138 +1,566 @@
 [
   {
-    "id": "SHP-001",
-    "trackingId": "EXF-7729-9128",
-    "status": "In Transit",
-    "origin": {
-      "city": "Shanghai",
-      "country": "CN",
-      "code": "CNSHA",
-      "port": "Port of Shanghai"
-    },
-    "destination": {
-      "city": "Los Angeles",
-      "country": "US",
-      "code": "USLAX",
-      "port": "Port of Los Angeles"
-    },
-    "shipper": "Global Tech Manufacturing",
-    "consignee": "Advanced Electronics Inc.",
-    "mode": "Ocean",
-    "type": "FCL",
-    "containerType": "40' High Cube",
-    "weight": 18500,
-    "volume": 65.4,
-    "eta": "2024-04-20T14:00:00Z",
-    "createdAt": "2024-03-25T08:30:00Z",
-    "milestones": [
-      { "id": "m1", "title": "Booking Confirmed", "date": "2024-03-25T09:00:00Z", "completed": true },
-      { "id": "m2", "title": "Empty Container Pickup", "date": "2024-03-27T10:30:00Z", "completed": true },
-      { "id": "m3", "title": "Loaded at Origin", "date": "2024-03-29T16:45:00Z", "completed": true },
-      { "id": "m4", "title": "Departure from Port", "date": "2024-04-02T08:00:00Z", "completed": true },
-      { "id": "m5", "title": "Arrival at Destination", "date": "2024-04-20T14:00:00Z", "completed": false },
-      { "id": "m6", "title": "Final Delivery", "date": "2024-04-22T09:00:00Z", "completed": false }
-    ]
+    "id": "SHP-2401",
+    "shipmentNumber": "SHP-2401",
+    "mode": "ocean",
+    "status": "draft",
+    "origin": { "city": "Shanghai", "country": "CN", "port": "Port of Shanghai", "code": "CNSHA" },
+    "destination": { "city": "Los Angeles", "country": "US", "port": "Port of Los Angeles", "code": "USLAX" },
+    "customer": "CON-001",
+    "assignedTo": "USR-003",
+    "cargo": { "description": "Consumer Electronics — LCD Monitors & Tablets", "weight": 12500, "volume": 48.2, "packages": 850, "containerType": "40' High Cube" },
+    "legs": [],
+    "trackingEvents": [
+      { "id": "EVT-2401-01", "shipmentId": "SHP-2401", "legId": null, "timestamp": "2026-04-15T09:00:00Z", "type": "system", "description": "Shipment draft created", "author": "USR-003" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2401-01", "shipmentId": "SHP-2401", "side": "revenue", "chargeType": "Ocean Freight", "amount": 2200.00, "currency": "USD", "status": "pending", "description": "Estimated ocean freight CNSHA–USLAX 40'HC" }
+    ],
+    "documents": [],
+    "createdAt": "2026-04-15T09:00:00Z",
+    "updatedAt": "2026-04-15T09:00:00Z"
   },
   {
-    "id": "SHP-002",
-    "trackingId": "EXF-1102-4458",
-    "status": "Pending",
-    "origin": {
-      "city": "Hamburg",
-      "country": "DE",
-      "code": "DEHAM",
-      "port": "Port of Hamburg"
-    },
-    "destination": {
-      "city": "Veracruz",
-      "country": "MX",
-      "code": "MXVER",
-      "port": "Port of Veracruz"
-    },
-    "shipper": "EuroAuto Parts GmbH",
-    "consignee": "Automotriz del Bajío",
-    "mode": "Ocean",
-    "type": "LCL",
-    "weight": 1200,
-    "volume": 4.2,
-    "createdAt": "2024-04-10T11:15:00Z",
-    "milestones": [
-      { "id": "m1", "title": "Booking Requested", "date": "2024-04-10T11:15:00Z", "completed": true },
-      { "id": "m2", "title": "Booking Confirmed", "date": "2024-04-11T09:00:00Z", "completed": true }
-    ]
+    "id": "SHP-2402",
+    "shipmentNumber": "SHP-2402",
+    "mode": "air",
+    "status": "draft",
+    "origin": { "city": "Mumbai", "country": "IN", "port": "Chhatrapati Shivaji Maharaj Airport", "code": "INBOM" },
+    "destination": { "city": "London", "country": "GB", "port": "London Heathrow Airport", "code": "GBLON" },
+    "customer": "CON-004",
+    "assignedTo": "USR-004",
+    "cargo": { "description": "Pharmaceutical Products — API & Tablet Blends", "weight": 320, "volume": 1.4, "packages": 24, "containerType": null },
+    "legs": [],
+    "trackingEvents": [
+      { "id": "EVT-2402-01", "shipmentId": "SHP-2402", "legId": null, "timestamp": "2026-04-16T07:30:00Z", "type": "system", "description": "Shipment draft created", "author": "USR-004" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2402-01", "shipmentId": "SHP-2402", "side": "revenue", "chargeType": "Air Freight", "amount": 1536.00, "currency": "USD", "status": "pending", "description": "Estimated air freight INBOM–GBLON @ $4.80/kg" }
+    ],
+    "documents": [],
+    "createdAt": "2026-04-16T07:30:00Z",
+    "updatedAt": "2026-04-16T07:30:00Z"
   },
   {
-    "id": "SHP-003",
-    "trackingId": "EXF-8833-2210",
-    "status": "Delivered",
-    "origin": {
-      "city": "Tokyo",
-      "country": "JP",
-      "code": "JPNRT",
-      "port": "Narita International Airport"
-    },
-    "destination": {
-      "city": "Chicago",
-      "country": "US",
-      "code": "USORD",
-      "port": "O'Hare International Airport"
-    },
-    "shipper": "Kyoto Precision Ltd",
-    "consignee": "MedTech Solutions",
-    "mode": "Air",
-    "type": "Express",
-    "weight": 450,
-    "volume": 1.8,
-    "deliveredAt": "2024-04-05T15:20:00Z",
-    "createdAt": "2024-04-01T10:00:00Z",
-    "milestones": [
-      { "title": "Delivered", "date": "2024-04-05T15:20:00Z", "completed": true }
-    ]
+    "id": "SHP-2403",
+    "shipmentNumber": "SHP-2403",
+    "mode": "ocean",
+    "status": "quoted",
+    "origin": { "city": "Singapore", "country": "SG", "port": "Port of Singapore", "code": "SGSIN" },
+    "destination": { "city": "Hamburg", "country": "DE", "port": "Port of Hamburg", "code": "DEHAM" },
+    "customer": "CON-003",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Industrial Machinery — CNC Lathes", "weight": 28000, "volume": 72.0, "packages": 12, "containerType": "2 × 20' Standard" },
+    "legs": [
+      { "id": "LEG-2403-01", "shipmentId": "SHP-2403", "sequence": 1, "mode": "ocean", "carrier": "COSCO Shipping", "originPort": "SGSIN", "destinationPort": "DEHAM", "departureDate": "2026-05-05T00:00:00Z", "arrivalDate": "2026-06-02T00:00:00Z", "status": "planned", "trackingNumber": null }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2403-01", "shipmentId": "SHP-2403", "legId": null, "timestamp": "2026-04-10T14:00:00Z", "type": "system", "description": "Shipment draft created", "author": "USR-002" },
+      { "id": "EVT-2403-02", "shipmentId": "SHP-2403", "legId": null, "timestamp": "2026-04-12T10:30:00Z", "type": "system", "description": "Quote sent to customer — 3 rate options provided", "author": "USR-002" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2403-01", "shipmentId": "SHP-2403", "side": "revenue", "chargeType": "Ocean Freight", "amount": 3900.00, "currency": "USD", "status": "pending", "description": "Quoted rate SGSIN–DEHAM 2×20'" },
+      { "id": "LED-2403-02", "shipmentId": "SHP-2403", "side": "cost", "chargeType": "Ocean Freight", "amount": 3100.00, "currency": "USD", "status": "pending", "description": "COSCO buy rate SGSIN–DEHAM" }
+    ],
+    "documents": [
+      { "id": "DOC-2403-01", "shipmentId": "SHP-2403", "type": "commercial-invoice", "fileName": "quote_SHP-2403.pdf", "fileUrl": "/api/documents/DOC-2403-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-04-12T10:00:00Z" }
+    ],
+    "createdAt": "2026-04-10T14:00:00Z",
+    "updatedAt": "2026-04-12T10:30:00Z"
   },
   {
-    "id": "SHP-004",
-    "trackingId": "EXF-5544-3322",
-    "status": "In Transit",
-    "origin": {
-      "city": "Ho Chi Minh City",
-      "country": "VN",
-      "code": "VNSGN",
-      "port": "Cat Lai Port"
-    },
-    "destination": {
-      "city": "Rotterdam",
-      "country": "NL",
-      "code": "NLRTM",
-      "port": "Port of Rotterdam"
-    },
-    "shipper": "VietTextiles Group",
-    "consignee": "Nordic Fashion Retail",
-    "mode": "Ocean",
-    "type": "FCL",
-    "eta": "2024-05-12T06:00:00Z",
-    "createdAt": "2024-04-05T14:30:00Z"
+    "id": "SHP-2404",
+    "shipmentNumber": "SHP-2404",
+    "mode": "trucking",
+    "status": "quoted",
+    "origin": { "city": "Monterrey", "country": "MX", "port": "Monterrey Logistics Hub", "code": "MXMTY" },
+    "destination": { "city": "Laredo", "country": "US", "port": "Laredo International Bridge", "code": "USLRD" },
+    "customer": "CON-002",
+    "assignedTo": "USR-003",
+    "cargo": { "description": "Auto Parts — Stamped Steel Components", "weight": 8400, "volume": 32.0, "packages": 340, "containerType": "FTL 53'" },
+    "legs": [
+      { "id": "LEG-2404-01", "shipmentId": "SHP-2404", "sequence": 1, "mode": "trucking", "carrier": "DB Schenker Road", "originPort": "MXMTY", "destinationPort": "USLRD", "departureDate": "2026-04-22T06:00:00Z", "arrivalDate": "2026-04-22T18:00:00Z", "status": "planned", "trackingNumber": null }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2404-01", "shipmentId": "SHP-2404", "legId": null, "timestamp": "2026-04-08T11:00:00Z", "type": "system", "description": "Shipment draft created", "author": "USR-003" },
+      { "id": "EVT-2404-02", "shipmentId": "SHP-2404", "legId": null, "timestamp": "2026-04-09T09:00:00Z", "type": "system", "description": "Quote submitted to customer", "author": "USR-003" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2404-01", "shipmentId": "SHP-2404", "side": "revenue", "chargeType": "Trucking", "amount": 1512.00, "currency": "USD", "status": "pending", "description": "FTL rate MXMTY–USLRD" },
+      { "id": "LED-2404-02", "shipmentId": "SHP-2404", "side": "cost", "chargeType": "Trucking", "amount": 1100.00, "currency": "USD", "status": "pending", "description": "Buy rate DB Schenker" }
+    ],
+    "documents": [],
+    "createdAt": "2026-04-08T11:00:00Z",
+    "updatedAt": "2026-04-09T09:00:00Z"
   },
   {
-    "id": "SHP-005",
-    "trackingId": "EXF-9900-1122",
-    "status": "Customs Hold",
-    "origin": {
-      "city": "Santos",
-      "country": "BR",
-      "code": "BRSSZ",
-      "port": "Port of Santos"
-    },
-    "destination": {
-      "city": "Miami",
-      "country": "US",
-      "code": "USMIA",
-      "port": "Port of Miami"
-    },
-    "shipper": "Coffee Beans Export",
-    "consignee": "StarBrew Supply",
-    "mode": "Ocean",
-    "type": "FCL",
-    "eta": "2024-04-18T20:00:00Z",
-    "createdAt": "2024-03-15T09:00:00Z"
+    "id": "SHP-2405",
+    "shipmentNumber": "SHP-2405",
+    "mode": "ocean",
+    "status": "booked",
+    "origin": { "city": "Shanghai", "country": "CN", "port": "Port of Shanghai", "code": "CNSHA" },
+    "destination": { "city": "Rotterdam", "country": "NL", "port": "Port of Rotterdam", "code": "NLRTM" },
+    "customer": "CON-001",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Consumer Electronics — Smart TVs & Set-top Boxes", "weight": 21000, "volume": 78.5, "packages": 1200, "containerType": "40' High Cube" },
+    "legs": [
+      { "id": "LEG-2405-01", "shipmentId": "SHP-2405", "sequence": 1, "mode": "ocean", "carrier": "Maersk Line", "originPort": "CNSHA", "destinationPort": "SGSIN", "departureDate": "2026-04-25T00:00:00Z", "arrivalDate": "2026-04-30T00:00:00Z", "status": "planned", "trackingNumber": "MAEU-88291044" },
+      { "id": "LEG-2405-02", "shipmentId": "SHP-2405", "sequence": 2, "mode": "ocean", "carrier": "Maersk Line", "originPort": "SGSIN", "destinationPort": "NLRTM", "departureDate": "2026-05-01T00:00:00Z", "arrivalDate": "2026-05-28T00:00:00Z", "status": "planned", "trackingNumber": "MAEU-88291044" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2405-01", "shipmentId": "SHP-2405", "legId": null, "timestamp": "2026-04-01T10:00:00Z", "type": "system", "description": "Shipment booked with Maersk Line — voyage AE123W", "author": "USR-002" },
+      { "id": "EVT-2405-02", "shipmentId": "SHP-2405", "legId": "LEG-2405-01", "timestamp": "2026-04-05T08:30:00Z", "type": "system", "description": "Empty container released: CNSHA yard", "author": "USR-002" },
+      { "id": "EVT-2405-03", "shipmentId": "SHP-2405", "legId": "LEG-2405-01", "timestamp": "2026-04-08T14:00:00Z", "type": "manual", "description": "Container stuffed and gate-in at Waigaoqiao Terminal", "author": "USR-003" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2405-01", "shipmentId": "SHP-2405", "side": "revenue", "chargeType": "Ocean Freight", "amount": 3200.00, "currency": "USD", "status": "pending", "description": "Ocean freight CNSHA–NLRTM 40'HC" },
+      { "id": "LED-2405-02", "shipmentId": "SHP-2405", "side": "cost", "chargeType": "Ocean Freight", "amount": 1850.00, "currency": "USD", "status": "pending", "description": "Maersk buy rate RC-001" },
+      { "id": "LED-2405-03", "shipmentId": "SHP-2405", "side": "cost", "chargeType": "Origin Agent Fee", "amount": 120.00, "currency": "USD", "status": "pending", "description": "Sinotrans handling fee" }
+    ],
+    "documents": [
+      { "id": "DOC-2405-01", "shipmentId": "SHP-2405", "type": "booking-confirmation", "fileName": "booking_MAEU-88291044.pdf", "fileUrl": "/api/documents/DOC-2405-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-04-01T11:00:00Z" },
+      { "id": "DOC-2405-02", "shipmentId": "SHP-2405", "type": "packing-list", "fileName": "packing_list_SHP-2405.xlsx", "fileUrl": "/api/documents/DOC-2405-02/download", "uploadedBy": "USR-003", "uploadedAt": "2026-04-07T16:00:00Z" }
+    ],
+    "createdAt": "2026-03-28T09:00:00Z",
+    "updatedAt": "2026-04-08T14:00:00Z"
+  },
+  {
+    "id": "SHP-2406",
+    "shipmentNumber": "SHP-2406",
+    "mode": "air",
+    "status": "booked",
+    "origin": { "city": "Hong Kong", "country": "HK", "port": "Hong Kong International Airport", "code": "HKHKG" },
+    "destination": { "city": "New York", "country": "US", "port": "John F. Kennedy International Airport", "code": "USJFK" },
+    "customer": "CON-003",
+    "assignedTo": "USR-004",
+    "cargo": { "description": "Fashion Apparel — Designer Garments (samples)", "weight": 680, "volume": 3.2, "packages": 48, "containerType": null },
+    "legs": [
+      { "id": "LEG-2406-01", "shipmentId": "SHP-2406", "sequence": 1, "mode": "air", "carrier": "Cathay Pacific Cargo", "originPort": "HKHKG", "destinationPort": "USJFK", "departureDate": "2026-04-20T23:45:00Z", "arrivalDate": "2026-04-21T06:30:00Z", "status": "planned", "trackingNumber": "CX-77129038" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2406-01", "shipmentId": "SHP-2406", "legId": null, "timestamp": "2026-04-12T13:00:00Z", "type": "system", "description": "Air shipment booked — CX flight HKG-JFK", "author": "USR-004" },
+      { "id": "EVT-2406-02", "shipmentId": "SHP-2406", "legId": "LEG-2406-01", "timestamp": "2026-04-14T09:00:00Z", "type": "manual", "description": "Cargo accepted at HKHKG cargo terminal", "author": "USR-004" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2406-01", "shipmentId": "SHP-2406", "side": "revenue", "chargeType": "Air Freight", "amount": 4760.00, "currency": "USD", "status": "pending", "description": "Air freight HKHKG–USJFK 680kg" },
+      { "id": "LED-2406-02", "shipmentId": "SHP-2406", "side": "cost", "chargeType": "Air Freight", "amount": 3264.00, "currency": "USD", "status": "pending", "description": "Cathay Pacific Cargo buy rate" },
+      { "id": "LED-2406-03", "shipmentId": "SHP-2406", "side": "revenue", "chargeType": "Handling Fee", "amount": 180.00, "currency": "USD", "status": "pending", "description": "Origin handling & docs" }
+    ],
+    "documents": [
+      { "id": "DOC-2406-01", "shipmentId": "SHP-2406", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2406.pdf", "fileUrl": "/api/documents/DOC-2406-01/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-13T11:00:00Z" }
+    ],
+    "createdAt": "2026-04-10T10:00:00Z",
+    "updatedAt": "2026-04-14T09:00:00Z"
+  },
+  {
+    "id": "SHP-2407",
+    "shipmentNumber": "SHP-2407",
+    "mode": "trucking",
+    "status": "booked",
+    "origin": { "city": "Dallas", "country": "US", "port": "Dallas Fort Worth Distribution Hub", "code": "USDFW" },
+    "destination": { "city": "Chicago", "country": "US", "port": "Chicago O'Hare Logistics Center", "code": "USCHI" },
+    "customer": "CON-005",
+    "assignedTo": "USR-003",
+    "cargo": { "description": "Perishable Food — Frozen Beef Cuts (temp-controlled)", "weight": 18000, "volume": 42.0, "packages": 900, "containerType": "Reefer 48'" },
+    "legs": [
+      { "id": "LEG-2407-01", "shipmentId": "SHP-2407", "sequence": 1, "mode": "trucking", "carrier": "J.B. Hunt Transport", "originPort": "USDFW", "destinationPort": "USCHI", "departureDate": "2026-04-18T05:00:00Z", "arrivalDate": "2026-04-18T22:00:00Z", "status": "planned", "trackingNumber": "JBH-20264180501" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2407-01", "shipmentId": "SHP-2407", "legId": null, "timestamp": "2026-04-14T15:00:00Z", "type": "system", "description": "Trucking order confirmed with J.B. Hunt", "author": "USR-003" },
+      { "id": "EVT-2407-02", "shipmentId": "SHP-2407", "legId": "LEG-2407-01", "timestamp": "2026-04-15T11:00:00Z", "type": "manual", "description": "Temperature logger activated — set to -18°C", "author": "USR-003" },
+      { "id": "EVT-2407-03", "shipmentId": "SHP-2407", "legId": "LEG-2407-01", "timestamp": "2026-04-16T08:00:00Z", "type": "system", "description": "Driver assigned: Truck #TX-4482", "author": "USR-003" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2407-01", "shipmentId": "SHP-2407", "side": "revenue", "chargeType": "Trucking", "amount": 2800.00, "currency": "USD", "status": "pending", "description": "Reefer FTL DFW–CHI" },
+      { "id": "LED-2407-02", "shipmentId": "SHP-2407", "side": "cost", "chargeType": "Trucking", "amount": 2100.00, "currency": "USD", "status": "pending", "description": "J.B. Hunt reefer rate" },
+      { "id": "LED-2407-03", "shipmentId": "SHP-2407", "side": "cost", "chargeType": "Fuel Surcharge", "amount": 210.00, "currency": "USD", "status": "pending", "description": "FSC @ 10%" }
+    ],
+    "documents": [
+      { "id": "DOC-2407-01", "shipmentId": "SHP-2407", "type": "BOL", "fileName": "BOL_SHP-2407.pdf", "fileUrl": "/api/documents/DOC-2407-01/download", "uploadedBy": "USR-003", "uploadedAt": "2026-04-15T12:00:00Z" }
+    ],
+    "createdAt": "2026-04-13T09:00:00Z",
+    "updatedAt": "2026-04-16T08:00:00Z"
+  },
+  {
+    "id": "SHP-2408",
+    "shipmentNumber": "SHP-2408",
+    "mode": "ocean",
+    "status": "in-transit",
+    "origin": { "city": "Ho Chi Minh City", "country": "VN", "port": "Cat Lai Port", "code": "VNSGN" },
+    "destination": { "city": "Rotterdam", "country": "NL", "port": "Port of Rotterdam", "code": "NLRTM" },
+    "customer": "CON-003",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Textiles — Woven Fabric Rolls & Garments", "weight": 15200, "volume": 58.3, "packages": 620, "containerType": "40' Standard" },
+    "legs": [
+      { "id": "LEG-2408-01", "shipmentId": "SHP-2408", "sequence": 1, "mode": "ocean", "carrier": "MSC Mediterranean Shipping", "originPort": "VNSGN", "destinationPort": "SGSIN", "departureDate": "2026-03-28T06:00:00Z", "arrivalDate": "2026-04-01T18:00:00Z", "status": "completed", "trackingNumber": "MSCU-74410023" },
+      { "id": "LEG-2408-02", "shipmentId": "SHP-2408", "sequence": 2, "mode": "ocean", "carrier": "MSC Mediterranean Shipping", "originPort": "SGSIN", "destinationPort": "NLRTM", "departureDate": "2026-04-03T00:00:00Z", "arrivalDate": "2026-05-01T00:00:00Z", "status": "in-transit", "trackingNumber": "MSCU-74410023" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2408-01", "shipmentId": "SHP-2408", "legId": "LEG-2408-01", "timestamp": "2026-03-25T10:00:00Z", "type": "system", "description": "Gate-in at Cat Lai Port, VNSGN", "author": "USR-002" },
+      { "id": "EVT-2408-02", "shipmentId": "SHP-2408", "legId": "LEG-2408-01", "timestamp": "2026-03-28T06:00:00Z", "type": "system", "description": "Vessel departed VNSGN — MSC AURORA", "author": "USR-002" },
+      { "id": "EVT-2408-03", "shipmentId": "SHP-2408", "legId": "LEG-2408-01", "timestamp": "2026-04-01T17:30:00Z", "type": "system", "description": "Arrived Singapore (SGSIN) — transshipment", "author": "USR-002" },
+      { "id": "EVT-2408-04", "shipmentId": "SHP-2408", "legId": "LEG-2408-02", "timestamp": "2026-04-03T00:30:00Z", "type": "system", "description": "Vessel departed SGSIN — MSC BEATRICE", "author": "USR-002" },
+      { "id": "EVT-2408-05", "shipmentId": "SHP-2408", "legId": "LEG-2408-02", "timestamp": "2026-04-10T12:00:00Z", "type": "system", "description": "Vessel passed Suez Canal — on schedule", "author": "USR-002" },
+      { "id": "EVT-2408-06", "shipmentId": "SHP-2408", "legId": "LEG-2408-02", "timestamp": "2026-04-16T08:00:00Z", "type": "manual", "description": "AIS tracking: vessel passing Gibraltar, ETA NLRTM confirmed May 1", "author": "USR-002" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2408-01", "shipmentId": "SHP-2408", "side": "revenue", "chargeType": "Ocean Freight", "amount": 2850.00, "currency": "USD", "status": "invoiced", "description": "Ocean freight VNSGN–NLRTM 40'" },
+      { "id": "LED-2408-02", "shipmentId": "SHP-2408", "side": "cost", "chargeType": "Ocean Freight", "amount": 1980.00, "currency": "USD", "status": "pending", "description": "MSC buy rate VNSGN–NLRTM" },
+      { "id": "LED-2408-03", "shipmentId": "SHP-2408", "side": "revenue", "chargeType": "Documentation Fee", "amount": 85.00, "currency": "USD", "status": "invoiced", "description": "BL issuance fee" },
+      { "id": "LED-2408-04", "shipmentId": "SHP-2408", "side": "cost", "chargeType": "Surcharge", "amount": 150.00, "currency": "USD", "status": "pending", "description": "Suez Canal surcharge" }
+    ],
+    "documents": [
+      { "id": "DOC-2408-01", "shipmentId": "SHP-2408", "type": "BOL", "fileName": "MBL_MSCU-74410023.pdf", "fileUrl": "/api/documents/DOC-2408-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-30T09:00:00Z" },
+      { "id": "DOC-2408-02", "shipmentId": "SHP-2408", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2408.pdf", "fileUrl": "/api/documents/DOC-2408-02/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-26T14:00:00Z" },
+      { "id": "DOC-2408-03", "shipmentId": "SHP-2408", "type": "packing-list", "fileName": "packing_list_SHP-2408.pdf", "fileUrl": "/api/documents/DOC-2408-03/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-26T14:05:00Z" }
+    ],
+    "createdAt": "2026-03-20T09:00:00Z",
+    "updatedAt": "2026-04-16T08:00:00Z"
+  },
+  {
+    "id": "SHP-2409",
+    "shipmentNumber": "SHP-2409",
+    "mode": "air",
+    "status": "in-transit",
+    "origin": { "city": "Tokyo", "country": "JP", "port": "Narita International Airport", "code": "JPNRT" },
+    "destination": { "city": "Chicago", "country": "US", "port": "O'Hare International Airport", "code": "USORD" },
+    "customer": "CON-004",
+    "assignedTo": "USR-004",
+    "cargo": { "description": "Medical Devices — Ultrasound Scanners", "weight": 480, "volume": 2.1, "packages": 18, "containerType": null },
+    "legs": [
+      { "id": "LEG-2409-01", "shipmentId": "SHP-2409", "sequence": 1, "mode": "air", "carrier": "ANA Cargo", "originPort": "JPNRT", "destinationPort": "USORD", "departureDate": "2026-04-14T22:00:00Z", "arrivalDate": "2026-04-15T16:30:00Z", "status": "completed", "trackingNumber": "NH-20264141200" },
+      { "id": "LEG-2409-02", "shipmentId": "SHP-2409", "sequence": 2, "mode": "trucking", "carrier": "FedEx Custom Critical", "originPort": "USORD", "destinationPort": "USCHI", "departureDate": "2026-04-16T09:00:00Z", "arrivalDate": "2026-04-16T14:00:00Z", "status": "in-transit", "trackingNumber": "FX-7729011234" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2409-01", "shipmentId": "SHP-2409", "legId": "LEG-2409-01", "timestamp": "2026-04-14T18:00:00Z", "type": "system", "description": "Cargo accepted at NRT cargo terminal", "author": "USR-004" },
+      { "id": "EVT-2409-02", "shipmentId": "SHP-2409", "legId": "LEG-2409-01", "timestamp": "2026-04-14T22:05:00Z", "type": "system", "description": "Flight NH001 departed Narita", "author": "USR-004" },
+      { "id": "EVT-2409-03", "shipmentId": "SHP-2409", "legId": "LEG-2409-01", "timestamp": "2026-04-15T16:32:00Z", "type": "system", "description": "Flight NH001 arrived O'Hare — cargo in customs", "author": "USR-004" },
+      { "id": "EVT-2409-04", "shipmentId": "SHP-2409", "legId": "LEG-2409-01", "timestamp": "2026-04-15T22:00:00Z", "type": "system", "description": "US Customs released — cargo cleared", "author": "USR-004" },
+      { "id": "EVT-2409-05", "shipmentId": "SHP-2409", "legId": "LEG-2409-02", "timestamp": "2026-04-16T09:00:00Z", "type": "system", "description": "Last-mile pickup by FedEx Custom Critical", "author": "USR-004" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2409-01", "shipmentId": "SHP-2409", "side": "revenue", "chargeType": "Air Freight", "amount": 3360.00, "currency": "USD", "status": "invoiced", "description": "Air freight JPNRT–USORD 480kg" },
+      { "id": "LED-2409-02", "shipmentId": "SHP-2409", "side": "cost", "chargeType": "Air Freight", "amount": 2400.00, "currency": "USD", "status": "pending", "description": "ANA Cargo buy rate" },
+      { "id": "LED-2409-03", "shipmentId": "SHP-2409", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 350.00, "currency": "USD", "status": "invoiced", "description": "US import customs clearance" },
+      { "id": "LED-2409-04", "shipmentId": "SHP-2409", "side": "cost", "chargeType": "Customs Brokerage", "amount": 220.00, "currency": "USD", "status": "pending", "description": "US Customs Solutions fee" }
+    ],
+    "documents": [
+      { "id": "DOC-2409-01", "shipmentId": "SHP-2409", "type": "airway-bill", "fileName": "AWB_NH-20264141200.pdf", "fileUrl": "/api/documents/DOC-2409-01/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-14T19:00:00Z" },
+      { "id": "DOC-2409-02", "shipmentId": "SHP-2409", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2409.pdf", "fileUrl": "/api/documents/DOC-2409-02/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-13T10:00:00Z" }
+    ],
+    "createdAt": "2026-04-10T09:00:00Z",
+    "updatedAt": "2026-04-16T09:00:00Z"
+  },
+  {
+    "id": "SHP-2410",
+    "shipmentNumber": "SHP-2410",
+    "mode": "ocean",
+    "status": "in-transit",
+    "origin": { "city": "Dubai", "country": "AE", "port": "Jebel Ali Port", "code": "AEDJB" },
+    "destination": { "city": "New York", "country": "US", "port": "Port of New York & New Jersey", "code": "USNYC" },
+    "customer": "CON-005",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Chemical Products — Industrial Lubricants (drums)", "weight": 32000, "volume": 28.0, "packages": 200, "containerType": "20' Standard" },
+    "legs": [
+      { "id": "LEG-2410-01", "shipmentId": "SHP-2410", "sequence": 1, "mode": "ocean", "carrier": "MSC Mediterranean Shipping", "originPort": "AEDJB", "destinationPort": "USNYC", "departureDate": "2026-03-20T00:00:00Z", "arrivalDate": "2026-04-22T00:00:00Z", "status": "in-transit", "trackingNumber": "MSCU-19938820" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2410-01", "shipmentId": "SHP-2410", "legId": "LEG-2410-01", "timestamp": "2026-03-18T10:00:00Z", "type": "system", "description": "Container gate-in at Jebel Ali Terminal 2", "author": "USR-002" },
+      { "id": "EVT-2410-02", "shipmentId": "SHP-2410", "legId": "LEG-2410-01", "timestamp": "2026-03-20T02:00:00Z", "type": "system", "description": "Vessel departed AEDJB — MSC ZARINA", "author": "USR-002" },
+      { "id": "EVT-2410-03", "shipmentId": "SHP-2410", "legId": "LEG-2410-01", "timestamp": "2026-03-28T14:00:00Z", "type": "system", "description": "Vessel transiting Red Sea — on schedule", "author": "USR-002" },
+      { "id": "EVT-2410-04", "shipmentId": "SHP-2410", "legId": "LEG-2410-01", "timestamp": "2026-04-05T08:00:00Z", "type": "system", "description": "Passed Strait of Gibraltar — ETA USNYC Apr 22", "author": "USR-002" },
+      { "id": "EVT-2410-05", "shipmentId": "SHP-2410", "legId": "LEG-2410-01", "timestamp": "2026-04-14T09:00:00Z", "type": "manual", "description": "ISF filing submitted to US CBP", "author": "USR-002" },
+      { "id": "EVT-2410-06", "shipmentId": "SHP-2410", "legId": "LEG-2410-01", "timestamp": "2026-04-16T07:00:00Z", "type": "system", "description": "AIS: vessel approaching US East Coast, 6 days out", "author": "USR-002" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2410-01", "shipmentId": "SHP-2410", "side": "revenue", "chargeType": "Ocean Freight", "amount": 2400.00, "currency": "USD", "status": "invoiced", "description": "Ocean freight AEDJB–USNYC 20'" },
+      { "id": "LED-2410-02", "shipmentId": "SHP-2410", "side": "cost", "chargeType": "Ocean Freight", "amount": 1650.00, "currency": "USD", "status": "pending", "description": "MSC buy rate" },
+      { "id": "LED-2410-03", "shipmentId": "SHP-2410", "side": "revenue", "chargeType": "Dangerous Goods Surcharge", "amount": 320.00, "currency": "USD", "status": "invoiced", "description": "IMDG Class 9 surcharge" },
+      { "id": "LED-2410-04", "shipmentId": "SHP-2410", "side": "cost", "chargeType": "Dangerous Goods Surcharge", "amount": 200.00, "currency": "USD", "status": "pending", "description": "MSC DG surcharge" },
+      { "id": "LED-2410-05", "shipmentId": "SHP-2410", "side": "cost", "chargeType": "ISF Filing", "amount": 75.00, "currency": "USD", "status": "invoiced", "description": "Importer Security Filing fee" }
+    ],
+    "documents": [
+      { "id": "DOC-2410-01", "shipmentId": "SHP-2410", "type": "BOL", "fileName": "MBL_MSCU-19938820.pdf", "fileUrl": "/api/documents/DOC-2410-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-22T09:00:00Z" },
+      { "id": "DOC-2410-02", "shipmentId": "SHP-2410", "type": "dangerous-goods-declaration", "fileName": "DGD_SHP-2410.pdf", "fileUrl": "/api/documents/DOC-2410-02/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-19T14:00:00Z" },
+      { "id": "DOC-2410-03", "shipmentId": "SHP-2410", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2410.pdf", "fileUrl": "/api/documents/DOC-2410-03/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-19T14:30:00Z" }
+    ],
+    "createdAt": "2026-03-10T10:00:00Z",
+    "updatedAt": "2026-04-16T07:00:00Z"
+  },
+  {
+    "id": "SHP-2411",
+    "shipmentNumber": "SHP-2411",
+    "mode": "trucking",
+    "status": "in-transit",
+    "origin": { "city": "Los Angeles", "country": "US", "port": "LA Inland Container Depot", "code": "USLAX" },
+    "destination": { "city": "Miami", "country": "US", "port": "Miami Distribution Center", "code": "USMIA" },
+    "customer": "CON-001",
+    "assignedTo": "USR-003",
+    "cargo": { "description": "Consumer Electronics — Smartphones & Accessories", "weight": 5500, "volume": 18.0, "packages": 2200, "containerType": "FTL 53'" },
+    "legs": [
+      { "id": "LEG-2411-01", "shipmentId": "SHP-2411", "sequence": 1, "mode": "trucking", "carrier": "Werner Enterprises", "originPort": "USLAX", "destinationPort": "USMIA", "departureDate": "2026-04-14T07:00:00Z", "arrivalDate": "2026-04-17T18:00:00Z", "status": "in-transit", "trackingNumber": "WE-20264140700" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2411-01", "shipmentId": "SHP-2411", "legId": "LEG-2411-01", "timestamp": "2026-04-14T06:45:00Z", "type": "manual", "description": "Cargo loaded and secured — driver: Miguel Reyes, Truck CA-8812", "author": "USR-003" },
+      { "id": "EVT-2411-02", "shipmentId": "SHP-2411", "legId": "LEG-2411-01", "timestamp": "2026-04-14T07:00:00Z", "type": "system", "description": "Truck departed Los Angeles", "author": "USR-003" },
+      { "id": "EVT-2411-03", "shipmentId": "SHP-2411", "legId": "LEG-2411-01", "timestamp": "2026-04-15T14:00:00Z", "type": "system", "description": "GPS checkpoint: Phoenix, AZ — on schedule", "author": "USR-003" },
+      { "id": "EVT-2411-04", "shipmentId": "SHP-2411", "legId": "LEG-2411-01", "timestamp": "2026-04-16T10:30:00Z", "type": "system", "description": "GPS checkpoint: El Paso, TX — minor delay (traffic)", "author": "USR-003" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2411-01", "shipmentId": "SHP-2411", "side": "revenue", "chargeType": "Trucking", "amount": 4200.00, "currency": "USD", "status": "invoiced", "description": "FTL LAX–MIA cross-country" },
+      { "id": "LED-2411-02", "shipmentId": "SHP-2411", "side": "cost", "chargeType": "Trucking", "amount": 3200.00, "currency": "USD", "status": "pending", "description": "Werner Enterprises rate" },
+      { "id": "LED-2411-03", "shipmentId": "SHP-2411", "side": "cost", "chargeType": "Fuel Surcharge", "amount": 380.00, "currency": "USD", "status": "pending", "description": "FSC 11.9%" }
+    ],
+    "documents": [
+      { "id": "DOC-2411-01", "shipmentId": "SHP-2411", "type": "BOL", "fileName": "BOL_WE-20264140700.pdf", "fileUrl": "/api/documents/DOC-2411-01/download", "uploadedBy": "USR-003", "uploadedAt": "2026-04-14T07:00:00Z" }
+    ],
+    "createdAt": "2026-04-10T11:00:00Z",
+    "updatedAt": "2026-04-16T10:30:00Z"
+  },
+  {
+    "id": "SHP-2412",
+    "shipmentNumber": "SHP-2412",
+    "mode": "ocean",
+    "status": "arrived",
+    "origin": { "city": "Santos", "country": "BR", "port": "Port of Santos", "code": "BRSSZ" },
+    "destination": { "city": "Miami", "country": "US", "port": "Port of Miami", "code": "USMIA" },
+    "customer": "CON-005",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Coffee Beans — Green Arabica (GrainPro bags)", "weight": 20000, "volume": 26.5, "packages": 400, "containerType": "20' Standard" },
+    "legs": [
+      { "id": "LEG-2412-01", "shipmentId": "SHP-2412", "sequence": 1, "mode": "ocean", "carrier": "MSC Mediterranean Shipping", "originPort": "BRSSZ", "destinationPort": "USMIA", "departureDate": "2026-03-25T00:00:00Z", "arrivalDate": "2026-04-12T00:00:00Z", "status": "completed", "trackingNumber": "MSCU-30012244" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2412-01", "shipmentId": "SHP-2412", "legId": "LEG-2412-01", "timestamp": "2026-03-22T10:00:00Z", "type": "system", "description": "Gate-in at Santos Terminal", "author": "USR-002" },
+      { "id": "EVT-2412-02", "shipmentId": "SHP-2412", "legId": "LEG-2412-01", "timestamp": "2026-03-25T02:00:00Z", "type": "system", "description": "Vessel departed BRSSZ — MSC LUCIA", "author": "USR-002" },
+      { "id": "EVT-2412-03", "shipmentId": "SHP-2412", "legId": "LEG-2412-01", "timestamp": "2026-04-05T12:00:00Z", "type": "system", "description": "Vessel transiting Caribbean Sea", "author": "USR-002" },
+      { "id": "EVT-2412-04", "shipmentId": "SHP-2412", "legId": "LEG-2412-01", "timestamp": "2026-04-12T08:30:00Z", "type": "system", "description": "Vessel arrived Port of Miami", "author": "USR-002" },
+      { "id": "EVT-2412-05", "shipmentId": "SHP-2412", "legId": "LEG-2412-01", "timestamp": "2026-04-12T14:00:00Z", "type": "manual", "description": "Container discharged — awaiting customs inspection", "author": "USR-002" },
+      { "id": "EVT-2412-06", "shipmentId": "SHP-2412", "legId": "LEG-2412-01", "timestamp": "2026-04-14T09:00:00Z", "type": "system", "description": "USDA inspection scheduled for Apr 16", "author": "USR-002" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2412-01", "shipmentId": "SHP-2412", "side": "revenue", "chargeType": "Ocean Freight", "amount": 2200.00, "currency": "USD", "status": "invoiced", "description": "Ocean freight BRSSZ–USMIA 20'" },
+      { "id": "LED-2412-02", "shipmentId": "SHP-2412", "side": "cost", "chargeType": "Ocean Freight", "amount": 1650.00, "currency": "USD", "status": "invoiced", "description": "MSC buy rate RC-003" },
+      { "id": "LED-2412-03", "shipmentId": "SHP-2412", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 380.00, "currency": "USD", "status": "invoiced", "description": "US import clearance incl. USDA" },
+      { "id": "LED-2412-04", "shipmentId": "SHP-2412", "side": "cost", "chargeType": "Customs Brokerage", "amount": 240.00, "currency": "USD", "status": "pending", "description": "US Customs Solutions brokerage" },
+      { "id": "LED-2412-05", "shipmentId": "SHP-2412", "side": "cost", "chargeType": "Demurrage", "amount": 0.00, "currency": "USD", "status": "pending", "description": "No demurrage accrued yet — free time expires Apr 19" }
+    ],
+    "documents": [
+      { "id": "DOC-2412-01", "shipmentId": "SHP-2412", "type": "BOL", "fileName": "MBL_MSCU-30012244.pdf", "fileUrl": "/api/documents/DOC-2412-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-27T10:00:00Z" },
+      { "id": "DOC-2412-02", "shipmentId": "SHP-2412", "type": "phytosanitary-certificate", "fileName": "phyto_cert_SHP-2412.pdf", "fileUrl": "/api/documents/DOC-2412-02/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-24T11:00:00Z" },
+      { "id": "DOC-2412-03", "shipmentId": "SHP-2412", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2412.pdf", "fileUrl": "/api/documents/DOC-2412-03/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-24T11:30:00Z" }
+    ],
+    "createdAt": "2026-03-15T09:00:00Z",
+    "updatedAt": "2026-04-14T09:00:00Z"
+  },
+  {
+    "id": "SHP-2413",
+    "shipmentNumber": "SHP-2413",
+    "mode": "air",
+    "status": "arrived",
+    "origin": { "city": "Shanghai", "country": "CN", "port": "Shanghai Pudong International Airport", "code": "CNPVG" },
+    "destination": { "city": "New York", "country": "US", "port": "John F. Kennedy International Airport", "code": "USJFK" },
+    "customer": "CON-002",
+    "assignedTo": "USR-004",
+    "cargo": { "description": "Luxury Goods — Designer Handbags & Leather Accessories", "weight": 290, "volume": 1.6, "packages": 120, "containerType": null },
+    "legs": [
+      { "id": "LEG-2413-01", "shipmentId": "SHP-2413", "sequence": 1, "mode": "air", "carrier": "Emirates SkyCargo", "originPort": "CNPVG", "destinationPort": "AEJEA", "departureDate": "2026-04-12T02:00:00Z", "arrivalDate": "2026-04-12T07:00:00Z", "status": "completed", "trackingNumber": "EK-20264120200" },
+      { "id": "LEG-2413-02", "shipmentId": "SHP-2413", "sequence": 2, "mode": "air", "carrier": "Emirates SkyCargo", "originPort": "AEJEA", "destinationPort": "USJFK", "departureDate": "2026-04-12T10:30:00Z", "arrivalDate": "2026-04-12T17:00:00Z", "status": "completed", "trackingNumber": "EK-20264120200" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2413-01", "shipmentId": "SHP-2413", "legId": "LEG-2413-01", "timestamp": "2026-04-11T22:00:00Z", "type": "system", "description": "Cargo tendered at PVG cargo terminal", "author": "USR-004" },
+      { "id": "EVT-2413-02", "shipmentId": "SHP-2413", "legId": "LEG-2413-01", "timestamp": "2026-04-12T02:10:00Z", "type": "system", "description": "EK flight departed Shanghai Pudong", "author": "USR-004" },
+      { "id": "EVT-2413-03", "shipmentId": "SHP-2413", "legId": "LEG-2413-01", "timestamp": "2026-04-12T07:00:00Z", "type": "system", "description": "Arrived Dubai hub — transshipment in progress", "author": "USR-004" },
+      { "id": "EVT-2413-04", "shipmentId": "SHP-2413", "legId": "LEG-2413-02", "timestamp": "2026-04-12T10:35:00Z", "type": "system", "description": "EK flight departed Dubai (DXB)", "author": "USR-004" },
+      { "id": "EVT-2413-05", "shipmentId": "SHP-2413", "legId": "LEG-2413-02", "timestamp": "2026-04-12T17:05:00Z", "type": "system", "description": "Arrived JFK — cargo in US Customs clearance", "author": "USR-004" },
+      { "id": "EVT-2413-06", "shipmentId": "SHP-2413", "legId": "LEG-2413-02", "timestamp": "2026-04-13T11:00:00Z", "type": "system", "description": "US Customs exam required — X-ray inspection", "author": "USR-004" },
+      { "id": "EVT-2413-07", "shipmentId": "SHP-2413", "legId": "LEG-2413-02", "timestamp": "2026-04-15T14:00:00Z", "type": "manual", "description": "Customs released — cargo available for pickup at JFK", "author": "USR-004" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2413-01", "shipmentId": "SHP-2413", "side": "revenue", "chargeType": "Air Freight", "amount": 2030.00, "currency": "USD", "status": "invoiced", "description": "Air freight CNPVG–USJFK 290kg via DXB" },
+      { "id": "LED-2413-02", "shipmentId": "SHP-2413", "side": "cost", "chargeType": "Air Freight", "amount": 1392.00, "currency": "USD", "status": "invoiced", "description": "Emirates SkyCargo buy rate RC-004" },
+      { "id": "LED-2413-03", "shipmentId": "SHP-2413", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 420.00, "currency": "USD", "status": "invoiced", "description": "US customs clearance incl. exam fee" },
+      { "id": "LED-2413-04", "shipmentId": "SHP-2413", "side": "cost", "chargeType": "Customs Brokerage", "amount": 275.00, "currency": "USD", "status": "invoiced", "description": "US Customs Solutions brokerage" }
+    ],
+    "documents": [
+      { "id": "DOC-2413-01", "shipmentId": "SHP-2413", "type": "airway-bill", "fileName": "AWB_EK-20264120200.pdf", "fileUrl": "/api/documents/DOC-2413-01/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-11T22:30:00Z" },
+      { "id": "DOC-2413-02", "shipmentId": "SHP-2413", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2413.pdf", "fileUrl": "/api/documents/DOC-2413-02/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-11T20:00:00Z" }
+    ],
+    "createdAt": "2026-04-08T10:00:00Z",
+    "updatedAt": "2026-04-15T14:00:00Z"
+  },
+  {
+    "id": "SHP-2414",
+    "shipmentNumber": "SHP-2414",
+    "mode": "ocean",
+    "status": "delivered",
+    "origin": { "city": "Hamburg", "country": "DE", "port": "Port of Hamburg", "code": "DEHAM" },
+    "destination": { "city": "Veracruz", "country": "MX", "port": "Port of Veracruz", "code": "MXVER" },
+    "customer": "CON-002",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Auto Parts — Gearboxes & Transmission Assemblies", "weight": 22000, "volume": 55.0, "packages": 180, "containerType": "40' Standard" },
+    "legs": [
+      { "id": "LEG-2414-01", "shipmentId": "SHP-2414", "sequence": 1, "mode": "ocean", "carrier": "Hapag-Lloyd", "originPort": "DEHAM", "destinationPort": "MXVER", "departureDate": "2026-02-20T00:00:00Z", "arrivalDate": "2026-03-22T00:00:00Z", "status": "completed", "trackingNumber": "HLCU-40019912" },
+      { "id": "LEG-2414-02", "shipmentId": "SHP-2414", "sequence": 2, "mode": "trucking", "carrier": "Grupo TMM", "originPort": "MXVER", "destinationPort": "MXMTY", "departureDate": "2026-03-24T06:00:00Z", "arrivalDate": "2026-03-24T20:00:00Z", "status": "completed", "trackingNumber": "TMM-20260324" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2414-01", "shipmentId": "SHP-2414", "legId": "LEG-2414-01", "timestamp": "2026-02-18T09:00:00Z", "type": "system", "description": "Container loaded at Hamburg terminal", "author": "USR-002" },
+      { "id": "EVT-2414-02", "shipmentId": "SHP-2414", "legId": "LEG-2414-01", "timestamp": "2026-02-20T06:00:00Z", "type": "system", "description": "Vessel departed Hamburg — HL FRANKFURT", "author": "USR-002" },
+      { "id": "EVT-2414-03", "shipmentId": "SHP-2414", "legId": "LEG-2414-01", "timestamp": "2026-03-22T07:00:00Z", "type": "system", "description": "Vessel arrived Veracruz", "author": "USR-002" },
+      { "id": "EVT-2414-04", "shipmentId": "SHP-2414", "legId": "LEG-2414-01", "timestamp": "2026-03-23T12:00:00Z", "type": "system", "description": "Mexico Customs cleared — Aduana release obtained", "author": "USR-002" },
+      { "id": "EVT-2414-05", "shipmentId": "SHP-2414", "legId": "LEG-2414-02", "timestamp": "2026-03-24T06:00:00Z", "type": "system", "description": "Last-mile truck departed Veracruz", "author": "USR-002" },
+      { "id": "EVT-2414-06", "shipmentId": "SHP-2414", "legId": "LEG-2414-02", "timestamp": "2026-03-24T20:30:00Z", "type": "system", "description": "Delivered to consignee in Monterrey — POD obtained", "author": "USR-002" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2414-01", "shipmentId": "SHP-2414", "side": "revenue", "chargeType": "Ocean Freight", "amount": 3100.00, "currency": "USD", "status": "paid", "description": "Ocean freight DEHAM–MXVER 40'" },
+      { "id": "LED-2414-02", "shipmentId": "SHP-2414", "side": "cost", "chargeType": "Ocean Freight", "amount": 2200.00, "currency": "USD", "status": "paid", "description": "Hapag-Lloyd buy rate" },
+      { "id": "LED-2414-03", "shipmentId": "SHP-2414", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 480.00, "currency": "USD", "status": "paid", "description": "MX customs clearance" },
+      { "id": "LED-2414-04", "shipmentId": "SHP-2414", "side": "cost", "chargeType": "Customs Brokerage", "amount": 300.00, "currency": "USD", "status": "paid", "description": "Local agent fee MXVER" },
+      { "id": "LED-2414-05", "shipmentId": "SHP-2414", "side": "revenue", "chargeType": "Last Mile Delivery", "amount": 420.00, "currency": "USD", "status": "paid", "description": "Trucking MXVER–MXMTY" }
+    ],
+    "documents": [
+      { "id": "DOC-2414-01", "shipmentId": "SHP-2414", "type": "BOL", "fileName": "MBL_HLCU-40019912.pdf", "fileUrl": "/api/documents/DOC-2414-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-02-22T09:00:00Z" },
+      { "id": "DOC-2414-02", "shipmentId": "SHP-2414", "type": "customs-declaration", "fileName": "aduana_SHP-2414.pdf", "fileUrl": "/api/documents/DOC-2414-02/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-23T13:00:00Z" },
+      { "id": "DOC-2414-03", "shipmentId": "SHP-2414", "type": "proof-of-delivery", "fileName": "POD_SHP-2414.pdf", "fileUrl": "/api/documents/DOC-2414-03/download", "uploadedBy": "USR-002", "uploadedAt": "2026-03-24T21:00:00Z" }
+    ],
+    "createdAt": "2026-02-05T10:00:00Z",
+    "updatedAt": "2026-03-24T21:00:00Z"
+  },
+  {
+    "id": "SHP-2415",
+    "shipmentNumber": "SHP-2415",
+    "mode": "air",
+    "status": "delivered",
+    "origin": { "city": "Tokyo", "country": "JP", "port": "Narita International Airport", "code": "JPNRT" },
+    "destination": { "city": "Sydney", "country": "AU", "port": "Sydney Kingsford Smith Airport", "code": "AUSYD" },
+    "customer": "CON-004",
+    "assignedTo": "USR-004",
+    "cargo": { "description": "Medical Equipment — MRI Coil Arrays (fragile)", "weight": 310, "volume": 1.8, "packages": 6, "containerType": null },
+    "legs": [
+      { "id": "LEG-2415-01", "shipmentId": "SHP-2415", "sequence": 1, "mode": "air", "carrier": "Qantas Freight", "originPort": "JPNRT", "destinationPort": "AUSYD", "departureDate": "2026-04-05T14:00:00Z", "arrivalDate": "2026-04-06T04:30:00Z", "status": "completed", "trackingNumber": "QF-20264050200" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2415-01", "shipmentId": "SHP-2415", "legId": "LEG-2415-01", "timestamp": "2026-04-05T10:00:00Z", "type": "system", "description": "Cargo accepted at NRT cargo terminal — fragile labels applied", "author": "USR-004" },
+      { "id": "EVT-2415-02", "shipmentId": "SHP-2415", "legId": "LEG-2415-01", "timestamp": "2026-04-05T14:05:00Z", "type": "system", "description": "QF flight departed Narita", "author": "USR-004" },
+      { "id": "EVT-2415-03", "shipmentId": "SHP-2415", "legId": "LEG-2415-01", "timestamp": "2026-04-06T04:35:00Z", "type": "system", "description": "Arrived Sydney — cargo in Australian Border Force inspection", "author": "USR-004" },
+      { "id": "EVT-2415-04", "shipmentId": "SHP-2415", "legId": "LEG-2415-01", "timestamp": "2026-04-06T11:00:00Z", "type": "system", "description": "ABF clearance granted — AQIS inspection passed", "author": "USR-004" },
+      { "id": "EVT-2415-05", "shipmentId": "SHP-2415", "legId": "LEG-2415-01", "timestamp": "2026-04-06T15:30:00Z", "type": "system", "description": "Delivered to Royal North Shore Hospital — POD signed", "author": "USR-004" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2415-01", "shipmentId": "SHP-2415", "side": "revenue", "chargeType": "Air Freight", "amount": 2480.00, "currency": "USD", "status": "paid", "description": "Air freight JPNRT–AUSYD 310kg" },
+      { "id": "LED-2415-02", "shipmentId": "SHP-2415", "side": "cost", "chargeType": "Air Freight", "amount": 1736.00, "currency": "USD", "status": "paid", "description": "Qantas Freight buy rate" },
+      { "id": "LED-2415-03", "shipmentId": "SHP-2415", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 360.00, "currency": "USD", "status": "paid", "description": "AU import clearance + AQIS" },
+      { "id": "LED-2415-04", "shipmentId": "SHP-2415", "side": "cost", "chargeType": "Customs Brokerage", "amount": 220.00, "currency": "USD", "status": "paid", "description": "Local broker fee SYD" }
+    ],
+    "documents": [
+      { "id": "DOC-2415-01", "shipmentId": "SHP-2415", "type": "airway-bill", "fileName": "AWB_QF-20264050200.pdf", "fileUrl": "/api/documents/DOC-2415-01/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-05T10:30:00Z" },
+      { "id": "DOC-2415-02", "shipmentId": "SHP-2415", "type": "proof-of-delivery", "fileName": "POD_SHP-2415.pdf", "fileUrl": "/api/documents/DOC-2415-02/download", "uploadedBy": "USR-004", "uploadedAt": "2026-04-06T16:00:00Z" }
+    ],
+    "createdAt": "2026-03-30T10:00:00Z",
+    "updatedAt": "2026-04-06T16:00:00Z"
+  },
+  {
+    "id": "SHP-2416",
+    "shipmentNumber": "SHP-2416",
+    "mode": "trucking",
+    "status": "delivered",
+    "origin": { "city": "Vancouver", "country": "CA", "port": "Vancouver Logistics Park", "code": "CAYVR" },
+    "destination": { "city": "Los Angeles", "country": "US", "port": "LA Inland Container Depot", "code": "USLAX" },
+    "customer": "CON-003",
+    "assignedTo": "USR-003",
+    "cargo": { "description": "Furniture — Flat-pack Office Furniture Sets", "weight": 11000, "volume": 62.0, "packages": 480, "containerType": "FTL 53'" },
+    "legs": [
+      { "id": "LEG-2416-01", "shipmentId": "SHP-2416", "sequence": 1, "mode": "trucking", "carrier": "Challenger Motor Freight", "originPort": "CAYVR", "destinationPort": "USLAX", "departureDate": "2026-04-10T08:00:00Z", "arrivalDate": "2026-04-11T22:00:00Z", "status": "completed", "trackingNumber": "CMF-20264100800" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2416-01", "shipmentId": "SHP-2416", "legId": "LEG-2416-01", "timestamp": "2026-04-10T07:45:00Z", "type": "manual", "description": "Load complete — driver: Robert Singh, Plate BC-9920", "author": "USR-003" },
+      { "id": "EVT-2416-02", "shipmentId": "SHP-2416", "legId": "LEG-2416-01", "timestamp": "2026-04-10T08:00:00Z", "type": "system", "description": "Truck departed Vancouver", "author": "USR-003" },
+      { "id": "EVT-2416-03", "shipmentId": "SHP-2416", "legId": "LEG-2416-01", "timestamp": "2026-04-10T14:00:00Z", "type": "system", "description": "US-Canada border crossed at Peace Arch, WA", "author": "USR-003" },
+      { "id": "EVT-2416-04", "shipmentId": "SHP-2416", "legId": "LEG-2416-01", "timestamp": "2026-04-11T22:10:00Z", "type": "system", "description": "Delivered to consignee warehouse — POD signed by J. Torres", "author": "USR-003" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2416-01", "shipmentId": "SHP-2416", "side": "revenue", "chargeType": "Trucking", "amount": 3600.00, "currency": "USD", "status": "paid", "description": "FTL YVR–LAX cross-border" },
+      { "id": "LED-2416-02", "shipmentId": "SHP-2416", "side": "cost", "chargeType": "Trucking", "amount": 2700.00, "currency": "USD", "status": "paid", "description": "Challenger Motor Freight rate" },
+      { "id": "LED-2416-03", "shipmentId": "SHP-2416", "side": "cost", "chargeType": "Fuel Surcharge", "amount": 270.00, "currency": "USD", "status": "paid", "description": "FSC 10%" },
+      { "id": "LED-2416-04", "shipmentId": "SHP-2416", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 150.00, "currency": "USD", "status": "paid", "description": "US entry filing fee" }
+    ],
+    "documents": [
+      { "id": "DOC-2416-01", "shipmentId": "SHP-2416", "type": "BOL", "fileName": "BOL_CMF-20264100800.pdf", "fileUrl": "/api/documents/DOC-2416-01/download", "uploadedBy": "USR-003", "uploadedAt": "2026-04-10T08:00:00Z" },
+      { "id": "DOC-2416-02", "shipmentId": "SHP-2416", "type": "proof-of-delivery", "fileName": "POD_SHP-2416.pdf", "fileUrl": "/api/documents/DOC-2416-02/download", "uploadedBy": "USR-003", "uploadedAt": "2026-04-11T22:30:00Z" }
+    ],
+    "createdAt": "2026-04-05T10:00:00Z",
+    "updatedAt": "2026-04-11T22:30:00Z"
+  },
+  {
+    "id": "SHP-2417",
+    "shipmentNumber": "SHP-2417",
+    "mode": "ocean",
+    "status": "closed",
+    "origin": { "city": "Busan", "country": "KR", "port": "Port of Busan", "code": "KRPUS" },
+    "destination": { "city": "Los Angeles", "country": "US", "port": "Port of Los Angeles", "code": "USLAX" },
+    "customer": "CON-001",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Steel Products — Hot-rolled Steel Coils", "weight": 24000, "volume": 18.0, "packages": 8, "containerType": "20' Flat Rack" },
+    "legs": [
+      { "id": "LEG-2417-01", "shipmentId": "SHP-2417", "sequence": 1, "mode": "ocean", "carrier": "HMM (Hyundai Merchant Marine)", "originPort": "KRPUS", "destinationPort": "USLAX", "departureDate": "2026-01-15T00:00:00Z", "arrivalDate": "2026-02-05T00:00:00Z", "status": "completed", "trackingNumber": "HMM-88882200" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2417-01", "shipmentId": "SHP-2417", "legId": "LEG-2417-01", "timestamp": "2026-01-13T09:00:00Z", "type": "system", "description": "Flat rack loaded and secured at Busan terminal", "author": "USR-002" },
+      { "id": "EVT-2417-02", "shipmentId": "SHP-2417", "legId": "LEG-2417-01", "timestamp": "2026-01-15T03:00:00Z", "type": "system", "description": "Vessel departed Busan — HMM ALGECIRAS", "author": "USR-002" },
+      { "id": "EVT-2417-03", "shipmentId": "SHP-2417", "legId": "LEG-2417-01", "timestamp": "2026-02-05T10:00:00Z", "type": "system", "description": "Vessel arrived Port of Los Angeles", "author": "USR-002" },
+      { "id": "EVT-2417-04", "shipmentId": "SHP-2417", "legId": "LEG-2417-01", "timestamp": "2026-02-07T09:00:00Z", "type": "system", "description": "US Customs released — ISF matched", "author": "USR-002" },
+      { "id": "EVT-2417-05", "shipmentId": "SHP-2417", "legId": "LEG-2417-01", "timestamp": "2026-02-08T14:00:00Z", "type": "system", "description": "Cargo delivered to consignee facility", "author": "USR-002" },
+      { "id": "EVT-2417-06", "shipmentId": "SHP-2417", "legId": null, "timestamp": "2026-02-28T11:00:00Z", "type": "system", "description": "Final invoice paid — shipment file closed", "author": "USR-001" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2417-01", "shipmentId": "SHP-2417", "side": "revenue", "chargeType": "Ocean Freight", "amount": 3800.00, "currency": "USD", "status": "paid", "description": "Ocean freight KRPUS–USLAX 20' Flat Rack" },
+      { "id": "LED-2417-02", "shipmentId": "SHP-2417", "side": "cost", "chargeType": "Ocean Freight", "amount": 2800.00, "currency": "USD", "status": "paid", "description": "HMM buy rate flat rack" },
+      { "id": "LED-2417-03", "shipmentId": "SHP-2417", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 380.00, "currency": "USD", "status": "paid", "description": "US import clearance" },
+      { "id": "LED-2417-04", "shipmentId": "SHP-2417", "side": "cost", "chargeType": "Customs Brokerage", "amount": 240.00, "currency": "USD", "status": "paid", "description": "US Customs Solutions fee" },
+      { "id": "LED-2417-05", "shipmentId": "SHP-2417", "side": "revenue", "chargeType": "Handling", "amount": 220.00, "currency": "USD", "status": "paid", "description": "Oversized cargo handling" }
+    ],
+    "documents": [
+      { "id": "DOC-2417-01", "shipmentId": "SHP-2417", "type": "BOL", "fileName": "MBL_HMM-88882200.pdf", "fileUrl": "/api/documents/DOC-2417-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-01-17T09:00:00Z" },
+      { "id": "DOC-2417-02", "shipmentId": "SHP-2417", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2417.pdf", "fileUrl": "/api/documents/DOC-2417-02/download", "uploadedBy": "USR-002", "uploadedAt": "2026-01-14T11:00:00Z" },
+      { "id": "DOC-2417-03", "shipmentId": "SHP-2417", "type": "proof-of-delivery", "fileName": "POD_SHP-2417.pdf", "fileUrl": "/api/documents/DOC-2417-03/download", "uploadedBy": "USR-002", "uploadedAt": "2026-02-08T15:00:00Z" }
+    ],
+    "createdAt": "2026-01-05T10:00:00Z",
+    "updatedAt": "2026-02-28T11:00:00Z"
+  },
+  {
+    "id": "SHP-2418",
+    "shipmentNumber": "SHP-2418",
+    "mode": "ocean",
+    "status": "closed",
+    "origin": { "city": "Rotterdam", "country": "NL", "port": "Port of Rotterdam", "code": "NLRTM" },
+    "destination": { "city": "New York", "country": "US", "port": "Port of New York & New Jersey", "code": "USNYC" },
+    "customer": "CON-002",
+    "assignedTo": "USR-002",
+    "cargo": { "description": "Industrial Equipment — Hydraulic Presses & Components", "weight": 38000, "volume": 85.0, "packages": 22, "containerType": "2 × 40' Standard" },
+    "legs": [
+      { "id": "LEG-2418-01", "shipmentId": "SHP-2418", "sequence": 1, "mode": "ocean", "carrier": "Maersk Line", "originPort": "NLRTM", "destinationPort": "USNYC", "departureDate": "2026-01-10T00:00:00Z", "arrivalDate": "2026-01-25T00:00:00Z", "status": "completed", "trackingNumber": "MAEU-11002244" }
+    ],
+    "trackingEvents": [
+      { "id": "EVT-2418-01", "shipmentId": "SHP-2418", "legId": "LEG-2418-01", "timestamp": "2026-01-08T10:00:00Z", "type": "system", "description": "Containers loaded at Rotterdam ECT terminal", "author": "USR-002" },
+      { "id": "EVT-2418-02", "shipmentId": "SHP-2418", "legId": "LEG-2418-01", "timestamp": "2026-01-10T00:30:00Z", "type": "system", "description": "Vessel departed Rotterdam — MAERSK EINDHOVEN", "author": "USR-002" },
+      { "id": "EVT-2418-03", "shipmentId": "SHP-2418", "legId": "LEG-2418-01", "timestamp": "2026-01-25T08:00:00Z", "type": "system", "description": "Vessel arrived New York", "author": "USR-002" },
+      { "id": "EVT-2418-04", "shipmentId": "SHP-2418", "legId": "LEG-2418-01", "timestamp": "2026-01-27T11:00:00Z", "type": "system", "description": "Customs cleared — cargo released", "author": "USR-002" },
+      { "id": "EVT-2418-05", "shipmentId": "SHP-2418", "legId": "LEG-2418-01", "timestamp": "2026-01-29T16:00:00Z", "type": "system", "description": "Delivered to consignee warehouse, Newark NJ", "author": "USR-002" },
+      { "id": "EVT-2418-06", "shipmentId": "SHP-2418", "legId": null, "timestamp": "2026-02-20T14:00:00Z", "type": "system", "description": "All invoices settled — file closed", "author": "USR-001" }
+    ],
+    "ledgerEntries": [
+      { "id": "LED-2418-01", "shipmentId": "SHP-2418", "side": "revenue", "chargeType": "Ocean Freight", "amount": 5800.00, "currency": "USD", "status": "paid", "description": "Ocean freight NLRTM–USNYC 2×40'" },
+      { "id": "LED-2418-02", "shipmentId": "SHP-2418", "side": "cost", "chargeType": "Ocean Freight", "amount": 3700.00, "currency": "USD", "status": "paid", "description": "Maersk buy rate 2×40'" },
+      { "id": "LED-2418-03", "shipmentId": "SHP-2418", "side": "revenue", "chargeType": "Customs Brokerage", "amount": 520.00, "currency": "USD", "status": "paid", "description": "US import clearance + ISF" },
+      { "id": "LED-2418-04", "shipmentId": "SHP-2418", "side": "cost", "chargeType": "Customs Brokerage", "amount": 320.00, "currency": "USD", "status": "paid", "description": "US Customs Solutions fee" },
+      { "id": "LED-2418-05", "shipmentId": "SHP-2418", "side": "revenue", "chargeType": "Detention", "amount": 300.00, "currency": "USD", "status": "paid", "description": "2 days container detention at USNYC" }
+    ],
+    "documents": [
+      { "id": "DOC-2418-01", "shipmentId": "SHP-2418", "type": "BOL", "fileName": "MBL_MAEU-11002244.pdf", "fileUrl": "/api/documents/DOC-2418-01/download", "uploadedBy": "USR-002", "uploadedAt": "2026-01-12T09:00:00Z" },
+      { "id": "DOC-2418-02", "shipmentId": "SHP-2418", "type": "commercial-invoice", "fileName": "commercial_invoice_SHP-2418.pdf", "fileUrl": "/api/documents/DOC-2418-02/download", "uploadedBy": "USR-002", "uploadedAt": "2026-01-09T11:00:00Z" },
+      { "id": "DOC-2418-03", "shipmentId": "SHP-2418", "type": "proof-of-delivery", "fileName": "POD_SHP-2418.pdf", "fileUrl": "/api/documents/DOC-2418-03/download", "uploadedBy": "USR-002", "uploadedAt": "2026-01-29T17:00:00Z" }
+    ],
+    "createdAt": "2025-12-20T10:00:00Z",
+    "updatedAt": "2026-02-20T14:00:00Z"
   }
 ]

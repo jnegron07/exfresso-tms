@@ -1,0 +1,152 @@
+[
+  {
+    "id": "CON-001",
+    "name": "Sarah Chen",
+    "company": "Global Tech Manufacturing",
+    "role": "Supply Chain Manager",
+    "email": "s.chen@gtm.cn",
+    "phone": "+86-21-5555-0100",
+    "country": "China",
+    "type": "customer"
+  },
+  {
+    "id": "CON-002",
+    "name": "Michael Bauer",
+    "company": "EuroAuto Parts GmbH",
+    "role": "Logistics Director",
+    "email": "m.bauer@euroauto.de",
+    "phone": "+49-40-2020-3030",
+    "country": "Germany",
+    "type": "customer"
+  },
+  {
+    "id": "CON-003",
+    "name": "Thanh Nguyen",
+    "company": "VietTextiles Group",
+    "role": "Export Manager",
+    "email": "t.nguyen@viettex.vn",
+    "phone": "+84-28-3824-5000",
+    "country": "Vietnam",
+    "type": "customer"
+  },
+  {
+    "id": "CON-004",
+    "name": "Priya Patel",
+    "company": "Mumbai Pharma Exports",
+    "role": "Head of Logistics",
+    "email": "p.patel@mumpharma.in",
+    "phone": "+91-22-6600-8800",
+    "country": "India",
+    "type": "customer"
+  },
+  {
+    "id": "CON-005",
+    "name": "Carlos Herrera",
+    "company": "Café de Colombia S.A.",
+    "role": "Export Coordinator",
+    "email": "c.herrera@cafecol.com",
+    "phone": "+57-1-340-6600",
+    "country": "Colombia",
+    "type": "customer"
+  },
+  {
+    "id": "CON-006",
+    "name": "Henrik Sørensen",
+    "company": "Maersk Line",
+    "role": "Key Account Manager",
+    "email": "h.sorensen@maersk.com",
+    "phone": "+45-33-63-3363",
+    "country": "Denmark",
+    "type": "carrier"
+  },
+  {
+    "id": "CON-007",
+    "name": "Yuki Tanaka",
+    "company": "NYK Line",
+    "role": "Booking Manager",
+    "email": "y.tanaka@nykline.com",
+    "phone": "+81-3-3284-5151",
+    "country": "Japan",
+    "type": "carrier"
+  },
+  {
+    "id": "CON-008",
+    "name": "Fatima Al-Rashid",
+    "company": "Emirates SkyCargo",
+    "role": "Sales Executive",
+    "email": "f.alrashid@skycargo.ae",
+    "phone": "+971-4-214-4444",
+    "country": "United Arab Emirates",
+    "type": "carrier"
+  },
+  {
+    "id": "CON-009",
+    "name": "Diego Vargas",
+    "company": "LATAM Cargo",
+    "role": "Station Manager",
+    "email": "d.vargas@latamcargo.com",
+    "phone": "+56-2-2565-8000",
+    "country": "Chile",
+    "type": "carrier"
+  },
+  {
+    "id": "CON-010",
+    "name": "Wei Zhang",
+    "company": "Sinotrans Ltd",
+    "role": "Customs Broker",
+    "email": "w.zhang@sinotrans.com",
+    "phone": "+86-10-6229-6000",
+    "country": "China",
+    "type": "agent"
+  },
+  {
+    "id": "CON-011",
+    "name": "Emma Dubois",
+    "company": "DHL Global Forwarding",
+    "role": "Ocean Freight Agent",
+    "email": "e.dubois@dhl.com",
+    "phone": "+33-1-5566-7788",
+    "country": "France",
+    "type": "agent"
+  },
+  {
+    "id": "CON-012",
+    "name": "Ravi Sharma",
+    "company": "Agility Logistics India",
+    "role": "Senior Agent",
+    "email": "r.sharma@agility.com",
+    "phone": "+91-44-6600-1212",
+    "country": "India",
+    "type": "agent"
+  },
+  {
+    "id": "CON-013",
+    "name": "Marcus Okafor",
+    "company": "Bolloré Transport & Logistics",
+    "role": "Port Agent",
+    "email": "m.okafor@bollore.com",
+    "phone": "+234-1-460-6500",
+    "country": "Nigeria",
+    "type": "agent"
+  },
+  {
+    "id": "CON-014",
+    "name": "Karin Fischer",
+    "company": "BKG Packaging GmbH",
+    "role": "Sales Representative",
+    "email": "k.fischer@bkgpack.de",
+    "phone": "+49-69-7777-8888",
+    "country": "Germany",
+    "type": "vendor"
+  },
+  {
+    "id": "CON-015",
+    "name": "Tom Bradley",
+    "company": "US Customs Solutions",
+    "role": "Compliance Specialist",
+    "email": "t.bradley@uscustoms-sol.com",
+    "phone": "+1-305-555-0199",
+    "country": "United States",
+    "type": "vendor"
+  }
+]

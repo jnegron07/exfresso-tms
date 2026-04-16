@@ -1,0 +1,122 @@
+[
+  {
+    "id": "NTF-001",
+    "userId": "USR-002",
+    "type": "customs-alert",
+    "message": "SHP-2412: USDA inspection scheduled for today (Apr 16) at Port of Miami.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2412",
+    "createdAt": "2026-04-16T07:00:00Z"
+  },
+  {
+    "id": "NTF-002",
+    "userId": "USR-004",
+    "type": "delivery-update",
+    "message": "SHP-2409: Last-mile pickup by FedEx Custom Critical is underway. ETA: today 14:00.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2409",
+    "createdAt": "2026-04-16T09:05:00Z"
+  },
+  {
+    "id": "NTF-003",
+    "userId": "USR-003",
+    "type": "booking-confirmed",
+    "message": "SHP-2407: J.B. Hunt confirmed reefer truck for Apr 18 departure DFW → CHI.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2407",
+    "createdAt": "2026-04-15T11:00:00Z"
+  },
+  {
+    "id": "NTF-004",
+    "userId": "USR-002",
+    "type": "document-required",
+    "message": "SHP-2403: Awaiting signed commercial invoice from VietTextiles Group to finalize booking.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2403",
+    "createdAt": "2026-04-14T16:00:00Z"
+  },
+  {
+    "id": "NTF-005",
+    "userId": "USR-002",
+    "type": "eta-update",
+    "message": "SHP-2410: Vessel MSC ZARINA on schedule — ETA Port of New York confirmed Apr 22.",
+    "read": true,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2410",
+    "createdAt": "2026-04-14T08:00:00Z"
+  },
+  {
+    "id": "NTF-006",
+    "userId": "USR-004",
+    "type": "customs-alert",
+    "message": "SHP-2413: US Customs exam completed — cargo released and available for pickup at JFK.",
+    "read": true,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2413",
+    "createdAt": "2026-04-15T14:00:00Z"
+  },
+  {
+    "id": "NTF-007",
+    "userId": "USR-003",
+    "type": "rate-card-expiring",
+    "message": "RC-004 (Emirates SkyCargo CNPVG–USJFK) expires Apr 30. Renew before expiry.",
+    "read": false,
+    "sourceType": "rate-card",
+    "sourceId": "RC-004",
+    "createdAt": "2026-04-13T10:00:00Z"
+  },
+  {
+    "id": "NTF-008",
+    "userId": "USR-002",
+    "type": "partner-request",
+    "message": "Kuehne + Nagel Asia Pacific has accepted your connection request. Review shared services.",
+    "read": false,
+    "sourceType": "partner",
+    "sourceId": "PTR-005",
+    "createdAt": "2026-04-12T14:00:00Z"
+  },
+  {
+    "id": "NTF-009",
+    "userId": "USR-001",
+    "type": "system",
+    "message": "Monthly P&L summary ready: March 2026 — 12 shipments closed, margin 28.4%.",
+    "read": true,
+    "sourceType": "system",
+    "sourceId": null,
+    "createdAt": "2026-04-01T09:00:00Z"
+  },
+  {
+    "id": "NTF-010",
+    "userId": "USR-003",
+    "type": "quote-response",
+    "message": "SHP-2404: EuroAuto Parts GmbH responded to the trucking quote — awaiting your review.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2404",
+    "createdAt": "2026-04-11T13:00:00Z"
+  },
+  {
+    "id": "NTF-011",
+    "userId": "USR-002",
+    "type": "demurrage-warning",
+    "message": "SHP-2412: Container free time at Port of Miami expires Apr 19. Arrange pickup to avoid demurrage.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2412",
+    "createdAt": "2026-04-16T08:00:00Z"
+  },
+  {
+    "id": "NTF-012",
+    "userId": "USR-004",
+    "type": "shipment-created",
+    "message": "New shipment SHP-2402 created and assigned to you — Mumbai Pharma Exports air freight to London.",
+    "read": false,
+    "sourceType": "shipment",
+    "sourceId": "SHP-2402",
+    "createdAt": "2026-04-16T07:30:00Z"
+  }
+]
