@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import maplibregl, { Map, Marker, Popup } from "maplibre-gl";
+import maplibregl, { Map } from "maplibre-gl";
 
 interface Waypoint {
   lng: number;
@@ -143,41 +143,49 @@ const modeColors: Record<string, string> = {
   road: "#A78BFA",
 };
 
+const badgeClasses: Record<string, string> = {
+  air: "bg-[#60A5FA]/10 text-[#60A5FA]",
+  ocean: "bg-[#6BD8CB]/10 text-[#6BD8CB]",
+  rail: "bg-[#F59E0B]/10 text-[#F59E0B]",
+  road: "bg-[#A78BFA]/10 text-[#A78BFA]",
+};
+
+const btnClasses: Record<string, string> = {
+  air: "bg-[#60A5FA]/10 text-[#60A5FA] hover:bg-[#60A5FA]/20",
+  ocean: "bg-[#6BD8CB]/10 text-[#6BD8CB] hover:bg-[#6BD8CB]/20",
+  rail: "bg-[#F59E0B]/10 text-[#F59E0B] hover:bg-[#F59E0B]/20",
+  road: "bg-[#A78BFA]/10 text-[#A78BFA] hover:bg-[#A78BFA]/20",
+};
+
 function createPopupHTML(route: ShipmentRoute): string {
-  const modeColor = modeColors[route.mode] || "#6BD8CB";
+  const badgeClass = badgeClasses[route.mode] || badgeClasses.ocean;
+  const btnClass = btnClasses[route.mode] || btnClasses.ocean;
 
   return `
-    <div style="font-family: var(--font-sans), sans-serif; padding: 4px 0;">
-      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-        <span style="font-size: 14px;">${modeEmojis[route.mode]}</span>
-        <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: ${modeColor};">
+    <div class="p-4 rounded-xl bg-surface-container-high/30">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-lg">${modeEmojis[route.mode]}</span>
+        <span class="text-xs font-bold px-2.5 py-1 rounded-lg ${badgeClass}">
           ${route.status}
-        </div>
+        </span>
       </div>
-      <div style="font-size: 15px; font-weight: 800; color: #dae2fd; margin-bottom: 4px;">
+      <div class="text-sm font-semibold text-on-surface mb-1">
         ${route.id}
       </div>
-      <div style="font-size: 12px; color: #c5c6cf; margin-bottom: 12px;">
+      <div class="text-xs text-on-surface-variant mb-3">
         ${route.origin.name} → ${route.destination.name}
       </div>
-      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(69,70,78,0.3); padding-top: 10px;">
+      <div class="border-t border-white/5 pt-3 mt-3"></div>
+      <div class="flex items-center justify-between gap-2 mt-3">
         <div>
-          <div style="font-size: 10px; color: #8f9098; text-transform: uppercase; letter-spacing: 0.05em;">
+          <div class="text-xs text-on-surface-variant/60 uppercase tracking-wider">
             ETA
           </div>
-          <div style="font-size: 13px; font-weight: 700; color: #dae2fd;">
+          <div class="text-sm font-bold text-on-surface">
             ${route.eta}
           </div>
         </div>
-        <a href="/shipments/${route.id}" style="font-size: 11px; font-weight: 700; color: ${modeColor}; text-decoration: none; padding: 6px 14px; border: 1px solid rgba(${
-    route.mode === "ocean"
-      ? "107,216,203"
-      : route.mode === "air"
-        ? "96,165,250"
-        : route.mode === "road"
-          ? "167,139,250"
-          : "245,158,11"
-  },0.3); border-radius: 8px;">
+        <a href="/shipments/${route.id}" class="text-xs font-bold px-3 py-1.5 rounded-lg transition-colors ${btnClass}">
           View Details
         </a>
       </div>
@@ -185,46 +193,47 @@ function createPopupHTML(route: ShipmentRoute): string {
   `;
 }
 
-function createHTMLMarker(mode: string, color: string): HTMLElement {
+function createTransportIconImage(
+  mode: string,
+  color: string,
+  size = 44
+): { data: Uint8ClampedArray; width: number; height: number } {
   const emoji = modeEmojis[mode] ?? "📦";
-  const div = document.createElement("div");
-  div.className = "maplibre-transport-marker";
-  div.style.cssText = `
-    position: relative;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `;
+  const dpr = 2;
+  const canvas = document.createElement("canvas");
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  const ctx = canvas.getContext("2d")!;
+  ctx.scale(dpr, dpr);
 
-  div.innerHTML = `
-    <div style="
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background-color: ${color}44;
-      border: 2px solid ${color};
-      animation: maplibre-pulse 2s ease-out infinite;
-    "></div>
-    <div style="
-      position: absolute;
-      inset: 6px;
-      border-radius: 50%;
-      background-color: ${color};
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      line-height: 1;
-      box-shadow: 0 0 0 4px ${color}33, 0 6px 14px rgba(0,0,0,0.5);
-      z-index: 1;
-    ">
-      ${emoji}
-    </div>
-  `;
+  const cx = size / 2;
+  const cy = size / 2;
+  const outerR = size / 2 - 2;
+  const innerR = size / 2 - 8;
 
-  return div;
+  // Translucent outer ring
+  ctx.beginPath();
+  ctx.arc(cx, cy, outerR, 0, Math.PI * 2);
+  ctx.fillStyle = color + "33";
+  ctx.fill();
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = color;
+  ctx.stroke();
+
+  // Solid badge
+  ctx.beginPath();
+  ctx.arc(cx, cy, innerR, 0, Math.PI * 2);
+  ctx.fillStyle = color;
+  ctx.fill();
+
+  // Emoji
+  ctx.font = `${Math.round(innerR * 1.1)}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(emoji, cx, cy + 1);
+
+  const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  return { data: imgData.data, width: canvas.width, height: canvas.height };
 }
 
 export function ShipmentMap() {
@@ -273,13 +282,50 @@ export function ShipmentMap() {
 
     const mapInstance = map.current;
 
+    mapInstance.on("style.load", () => {
+      mapInstance.setProjection({ type: "globe" });
+    });
+
     mapInstance.on("load", () => {
+      // Register one icon image per mode (reused across routes of the same mode)
+      const registeredModes = new Set<string>();
+      mockRoutes.forEach((r) => {
+        const modeKey = `transport-${r.mode}`;
+        if (registeredModes.has(r.mode)) return;
+        if (mapInstance.hasImage(modeKey)) {
+          registeredModes.add(r.mode);
+          return;
+        }
+        const color = modeColors[r.mode] || "#6BD8CB";
+        const img = createTransportIconImage(r.mode, color);
+        mapInstance.addImage(
+          modeKey,
+          { width: img.width, height: img.height, data: img.data },
+          { pixelRatio: 2 }
+        );
+        registeredModes.add(r.mode);
+      });
+
       mockRoutes.forEach((route) => {
         const color = modeColors[route.mode] || "#6BD8CB";
 
-        const coordinates = route.waypoints
-          ? route.waypoints.map((w) => [w.lng, w.lat])
-          : [[route.origin.lng, route.origin.lat], [route.destination.lng, route.destination.lat]];
+        const rawCoords: [number, number][] = route.waypoints
+          ? route.waypoints.map((w) => [w.lng, w.lat] as [number, number])
+          : [
+              [route.origin.lng, route.origin.lat],
+              [route.destination.lng, route.destination.lat],
+            ];
+
+        // Make longitudes continuous across the antimeridian so the line
+        // follows the short geodesic path instead of wrapping the wrong way.
+        const coordinates: [number, number][] = [rawCoords[0]];
+        for (let i = 1; i < rawCoords.length; i++) {
+          const [prevLng] = coordinates[i - 1];
+          let [lng, lat] = rawCoords[i];
+          while (lng - prevLng > 180) lng -= 360;
+          while (lng - prevLng < -180) lng += 360;
+          coordinates.push([lng, lat]);
+        }
 
         const lineSourceId = `route-line-${route.id}`;
         const lineLayerId = `route-line-layer-${route.id}`;
@@ -364,28 +410,54 @@ export function ShipmentMap() {
           },
         });
 
-        const markerElement = createHTMLMarker(route.mode, color);
-        const marker = new maplibregl.Marker({
-          element: markerElement,
-          anchor: "center",
-        })
-          .setLngLat([route.currentPosition.lng, route.currentPosition.lat])
-          .addTo(mapInstance);
+        const currentSourceId = `current-${route.id}`;
+        const currentLayerId = `current-layer-${route.id}`;
+        mapInstance.addSource(currentSourceId, {
+          type: "geojson",
+          data: {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [route.currentPosition.lng, route.currentPosition.lat],
+            },
+            properties: { routeId: route.id },
+          },
+        });
 
-        const popupContent = document.createElement("div");
-        popupContent.innerHTML = createPopupHTML(route);
+        mapInstance.addLayer({
+          id: currentLayerId,
+          type: "symbol",
+          source: currentSourceId,
+          layout: {
+            "icon-image": `transport-${route.mode}`,
+            "icon-size": 0.8,
+            "icon-allow-overlap": true,
+            "icon-ignore-placement": true,
+            "icon-anchor": "center",
+          },
+        });
 
-        const popup = new maplibregl.Popup({
-          maxWidth: "280px",
-          closeButton: true,
-          closeOnClick: false,
-        })
-          .setDOMContent(popupContent);
+        mapInstance.on("click", currentLayerId, (e) => {
+          const feature = e.features?.[0];
+          if (!feature) return;
+          const popupContent = document.createElement("div");
+          popupContent.innerHTML = createPopupHTML(route);
+          new maplibregl.Popup({
+            maxWidth: "280px",
+            closeButton: true,
+            closeOnClick: true,
+            offset: 20,
+          })
+            .setLngLat([route.currentPosition.lng, route.currentPosition.lat])
+            .setDOMContent(popupContent)
+            .addTo(mapInstance);
+        });
 
-        marker.setPopup(popup);
-
-        markerElement.addEventListener("click", () => {
-          popup.addTo(mapInstance);
+        mapInstance.on("mouseenter", currentLayerId, () => {
+          mapInstance.getCanvas().style.cursor = "pointer";
+        });
+        mapInstance.on("mouseleave", currentLayerId, () => {
+          mapInstance.getCanvas().style.cursor = "";
         });
       });
     });
@@ -400,18 +472,6 @@ export function ShipmentMap() {
 
   return (
     <>
-      <style>{`
-        @keyframes maplibre-pulse {
-          0% {
-            transform: scale(0.8);
-            opacity: 0.9;
-          }
-          100% {
-            transform: scale(2.4);
-            opacity: 0;
-          }
-        }
-      `}</style>
 
       <div
         className="relative w-full rounded-2xl overflow-hidden border border-white/5"
